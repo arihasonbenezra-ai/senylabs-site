@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philosophy - Seny Labs</title>
+  <meta name="description" content="How Seny Labs thinks about building software.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: #F7F3EE;
+      color: #0F0F0F;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #333;
+    }
+
+    a:focus-visible {
+      outline: 2px solid #0F0F0F;
+      outline-offset: 4px;
+    }
+
+    header {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E5E0D8;
+    }
+
+    .wordmark {
+      font-weight: 600;
+      font-size: 24px;
+      color: #0F0F0F;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark .node { animation: node-glow 2.5s ease-in-out infinite; }
+    .logo-mark .conn { stroke-dasharray: 60; stroke-dashoffset: 60; animation: conn-trace 1.5s ease forwards; fill: none; }
+    .logo-mark .nd1 { animation-delay: 0s; }
+    .logo-mark .nd2 { animation-delay: 0.3s; }
+    .logo-mark .nd3 { animation-delay: 0.6s; }
+    .logo-mark .nd4 { animation-delay: 0.9s; }
+    .logo-mark .nd5 { animation-delay: 1.2s; }
+    .logo-mark .cd1 { animation-delay: 0.1s; }
+    .logo-mark .cd2 { animation-delay: 0.4s; }
+    .logo-mark .cd3 { animation-delay: 0.7s; }
+    .logo-mark .cd4 { animation-delay: 1.0s; }
+    .logo-mark .cd5 { animation-delay: 1.3s; }
+
+    @keyframes node-glow { 0%,100% { opacity: 0.25; } 50% { opacity: 0.85; } }
+    @keyframes conn-trace { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
+
+    .wordmark:hover {
+      color: #0F0F0F;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+    }
+
+    .page-title {
+      padding: 80px 0 60px;
+    }
+
+    .page-title h1 {
+      font-weight: 600;
+      font-size: 36px;
+      letter-spacing: -0.03em;
+      color: #0F0F0F;
+    }
+
+    .divider {
+      height: 1px;
+      background: #E5E0D8;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .section p {
+      font-size: 17px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .approach-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .approach-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0F0F0F;
+      margin-bottom: 6px;
+    }
+
+    .approach-item p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 24px 48px;
+      border-top: 1px solid #E5E0D8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 12px;
+      color: #888;
+    }
+
+    footer a {
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 20px 24px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      main {
+        padding: 0 24px;
+      }
+
+      .page-title {
+        padding: 48px 0 40px;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      footer {
+        padding: 20px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="wordmark">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 50 50" aria-hidden="true">
+        <line class="conn cd1" x1="15" y1="10" x2="30" y2="20" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd2" x1="30" y1="20" x2="42" y2="12" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd3" x1="30" y1="20" x2="22" y2="38" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd4" x1="30" y1="20" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd5" x1="22" y1="38" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
+        <circle class="node nd1" cx="15" cy="10" r="4" fill="#0F0F0F"/>
+        <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#0F0F0F"/>
+        <circle class="node nd3" cx="42" cy="12" r="3" fill="#0F0F0F"/>
+        <circle class="node nd4" cx="22" cy="38" r="4" fill="#0F0F0F"/>
+        <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#0F0F0F"/>
+      </svg>
+      Seny Labs
+    </a>
+    <nav>
+      <a href="index.html#products">Products</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <main>
+
+  <div class="page-title">
+    <h1>Philosophy</h1>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">Credo</div>
+    <p>Every person is different. Their body, their schedule, their energy, their goals. We don't build templates. We build software that pays attention and shapes itself around you.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">Approach</div>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <h3>You're at the center.</h3>
+        <p>Your inputs, your patterns, your preferences. Everything connects through you.</p>
+      </div>
+      <div class="approach-item">
+        <h3>It pays attention.</h3>
+        <p>Your body, your schedule, your habits. Not everything carries equal weight on any given day. The software knows the difference.</p>
+      </div>
+      <div class="approach-item">
+        <h3>No two versions are the same.</h3>
+        <p>The longer you use it, the more it becomes yours.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Seny Labs LLC</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </footer>
+
+</body>
+</html>

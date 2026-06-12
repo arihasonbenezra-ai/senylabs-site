@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seny Labs</title>
+  <meta name="description" content="Seny Labs builds personal software that respects your time, learns how you work, and stays out of the way.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: #F7F3EE;
+      color: #0F0F0F;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #333;
+    }
+
+    a:focus-visible {
+      outline: 2px solid #0F0F0F;
+      outline-offset: 4px;
+    }
+
+    /* Header */
+
+    header {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #EBEBEB;
+    }
+
+    .wordmark {
+      font-weight: 600;
+      font-size: 24px;
+      color: #0F0F0F;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark .node { animation: node-glow 2.5s ease-in-out infinite; }
+    .logo-mark .conn { stroke-dasharray: 60; stroke-dashoffset: 60; animation: conn-trace 1.5s ease forwards; fill: none; }
+    .logo-mark .nd1 { animation-delay: 0s; }
+    .logo-mark .nd2 { animation-delay: 0.3s; }
+    .logo-mark .nd3 { animation-delay: 0.6s; }
+    .logo-mark .nd4 { animation-delay: 0.9s; }
+    .logo-mark .nd5 { animation-delay: 1.2s; }
+    .logo-mark .cd1 { animation-delay: 0.1s; }
+    .logo-mark .cd2 { animation-delay: 0.4s; }
+    .logo-mark .cd3 { animation-delay: 0.7s; }
+    .logo-mark .cd4 { animation-delay: 1.0s; }
+    .logo-mark .cd5 { animation-delay: 1.3s; }
+
+    @keyframes node-glow { 0%,100% { opacity: 0.25; } 50% { opacity: 0.85; } }
+    @keyframes conn-trace { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    /* Main */
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 120px 48px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .hero-video-bg.active {
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 26, 36, 0.62);
+      transition: background 1.2s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero.overlay-light .hero-overlay {
+      background: rgba(11, 26, 36, 0.38);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero-text {
+      transition: opacity 1.2s ease;
+    }
+
+    .hero-text.fade-soft {
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+      color: #F7F3EE;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: rgba(250, 250, 250, 0.5);
+      line-height: 1.7;
+      max-width: 520px;
+      font-weight: 400;
+      margin: 0 auto;
+    }
+
+    /* Divider */
+
+    .divider {
+      height: 1px;
+      background: #EBEBEB;
+    }
+
+    /* Credo + Approach */
+
+    .credo-approach {
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .credo-col .section-label,
+    .approach-col .section-label {
+      margin-bottom: 24px;
+    }
+
+    .credo-col p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .approach-col .approach-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .approach-item h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0F0F0F;
+      margin-bottom: 4px;
+    }
+
+    .approach-item p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    /* Products */
+
+    .products {
+      padding: 80px 0 64px;
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 12px;
+      padding: 40px;
+      background: #0F0F0F;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .product-content {
+      flex: 1;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .product-card h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: #E8E2D8;
+    }
+
+    .product-status {
+      font-size: 11px;
+      color: #94A8C2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding-top: 6px;
+    }
+
+    .product-body p {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 15px;
+      color: rgba(232, 226, 216, 0.6);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .product-body p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .product-closer {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 15px;
+      color: #E8E2D8;
+      font-weight: 600;
+      margin-top: 24px;
+    }
+
+    /* Phone mockup */
+
+    .phone-mockup {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .phone-frame {
+      background: #000;
+      border-radius: 28px;
+      border: 3px solid #2A2A2A;
+      padding: 8px;
+      overflow: hidden;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+    }
+
+    /* Signup */
+
+    .signup {
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .signup p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .signup-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      padding: 11px 16px;
+      border: 1px solid #DDD;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Outfit', sans-serif;
+      color: #333;
+      background: #FFF;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .signup-form input[type="email"]:focus {
+      border-color: #999;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: #CCC;
+    }
+
+    .signup-form button {
+      padding: 11px 22px;
+      background: #0F0F0F;
+      color: #FFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .signup-form button:hover {
+      background: #333;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: auto;
+      padding: 24px 48px;
+      border-top: 1px solid #EBEBEB;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 12px;
+      color: #888;
+    }
+
+    footer a {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 640px) {
+      header {
+        padding: 20px 24px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      main {
+        padding: 0 24px;
+      }
+
+      .hero {
+        padding: 72px 24px 60px;
+      }
+
+      .credo-approach {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 48px 0;
+      }
+
+      .products {
+        padding: 48px 0;
+      }
+
+      .product-card {
+        padding: 28px;
+        flex-direction: column;
+      }
+
+      .phone-mockup {
+        width: 160px;
+        align-self: center;
+      }
+
+      .signup {
+        padding: 48px 0;
+      }
+
+      .signup-form {
+        flex-direction: column;
+      }
+
+      .signup-form input[type="email"],
+      .signup-form button {
+        width: 100%;
+      }
+
+      footer {
+        padding: 20px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wordmark">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 50 50" aria-hidden="true">
+        <line class="conn cd1" x1="15" y1="10" x2="30" y2="20" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd2" x1="30" y1="20" x2="42" y2="12" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd3" x1="30" y1="20" x2="22" y2="38" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd4" x1="30" y1="20" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
+        <line class="conn cd5" x1="22" y1="38" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
+        <circle class="node nd1" cx="15" cy="10" r="4" fill="#0F0F0F"/>
+        <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#0F0F0F"/>
+        <circle class="node nd3" cx="42" cy="12" r="3" fill="#0F0F0F"/>
+        <circle class="node nd4" cx="22" cy="38" r="4" fill="#0F0F0F"/>
+        <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#0F0F0F"/>
+      </svg>
+      Seny Labs
+    </div>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-video" aria-hidden="true">
+      <video class="hero-video-bg active" src="assets/video1.mp4" muted playsinline preload="auto"></video>
+      <video class="hero-video-bg" src="assets/video2.mp4" muted playsinline preload="auto"></video>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Tools for the long game.</h1>
+        <p>Software that keeps you moving.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+  <section class="products" id="products">
+    <div class="section-label">Products</div>
+    <div class="product-card">
+      <div class="product-content">
+        <div class="product-header">
+          <h2>Decade</h2>
+          <span class="product-status">Coming soon</span>
+        </div>
+        <div class="product-body">
+          <p>A training partner that programs your workouts. Tell it what equipment you have, how much time you've got, and it builds the session. It remembers your machine settings, adjusts when you're dragging, and lets you swap exercises mid-workout if something feels off.</p>
+          <p>Every session feeds the next one. The more you train, the sharper it gets.</p>
+        </div>
+        <div class="product-closer">You show up. It handles the rest.</div>
+      </div>
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <img src="assets/decade-preview.png" alt="Decade app home screen showing today's workout session">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="signup">
+    <p>Get notified when Decade launches.</p>
+    <form class="signup-form" action="#" method="POST">
+      <input type="email" placeholder="you@email.com" required>
+      <button type="submit">Notify me</button>
+    </form>
+  </section>
+
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Seny Labs LLC</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </footer>
+
+  <script>
+    (function () {
+      var hero = document.querySelector('.hero');
+      var heroText = document.querySelector('.hero-text');
+      var videos = document.querySelectorAll('.hero-video-bg');
+      if (!hero || !heroText || videos.length < 2) return;
+
+      var current = 0;
+      var crossfadeSeconds = 1.5;
+
+      videos.forEach(function (video) {
+        video.muted = true;
+        video.playsInline = true;
+      });
+
+      videos[0].play().catch(function () {});
+
+      function crossfadeTo(nextIndex) {
+        if (nextIndex === current) return;
+        var next = videos[nextIndex];
+        next.currentTime = 0;
+        next.classList.add('active');
+        next.play().catch(function () {});
+        videos[current].classList.remove('active');
+        current = nextIndex;
+      }
+
+      videos.forEach(function (video, index) {
+        video.addEventListener('timeupdate', function () {
+          if (video !== videos[current] || !video.duration) return;
+          if (video.duration - video.currentTime <= crossfadeSeconds && !video.dataset.crossfading) {
+            video.dataset.crossfading = '1';
+            crossfadeTo((index + 1) % videos.length);
+          }
+        });
+
+        video.addEventListener('ended', function () {
+          video.dataset.crossfading = '';
+          video.pause();
+          video.currentTime = 0;
+        });
+      });
+
+      setTimeout(function () {
+        heroText.classList.add('fade-soft');
+        hero.classList.add('overlay-light');
+      }, 4000);
+    })();
+  </script>
+
+</body>
+</html>
