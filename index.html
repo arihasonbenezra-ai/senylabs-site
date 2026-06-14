@@ -542,6 +542,7 @@
     <a href="privacy.html">Privacy Policy</a>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     (function () {
       var hero = document.querySelector('.hero');
@@ -589,6 +590,62 @@
         heroText.classList.add('fade-soft');
         hero.classList.add('overlay-light');
       }, 4000);
+    })();
+
+    (function () {
+      var form = document.querySelector('.signup-form');
+      if (!form || typeof supabase === 'undefined') return;
+
+      var supabaseClient = supabase.createClient(
+        'https://jayytlyejlvilxyvoghi.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpheXl0bHllamx2aWx4eXZvZ2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NzY5MTUsImV4cCI6MjA5NTE1MjkxNX0.c0Q9L7esLQVZy5ul4szgKcnUulj5sKeIEH9Yea6_Hi8'
+      );
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var emailInput = form.querySelector('input[type="email"]');
+        var button = form.querySelector('button[type="submit"]');
+        var email = emailInput.value.trim();
+        if (!email) return;
+
+        var existingMessage = form.parentElement.querySelector('.signup-feedback');
+        if (existingMessage) existingMessage.remove();
+
+        button.disabled = true;
+
+        supabaseClient
+          .from('waitlist')
+          .insert({ email: email })
+          .then(function (result) {
+            if (!result.error) {
+              var success = document.createElement('p');
+              success.textContent = "You're on the list.";
+              form.replaceWith(success);
+              return;
+            }
+
+            if (result.error.code === '23505') {
+              var duplicate = document.createElement('p');
+              duplicate.textContent = "You're already on the list.";
+              form.replaceWith(duplicate);
+              return;
+            }
+
+            var errorMessage = document.createElement('p');
+            errorMessage.className = 'signup-feedback';
+            errorMessage.textContent = 'Something went wrong. Try again.';
+            form.parentElement.insertBefore(errorMessage, form);
+            button.disabled = false;
+          })
+          .catch(function () {
+            var errorMessage = document.createElement('p');
+            errorMessage.className = 'signup-feedback';
+            errorMessage.textContent = 'Something went wrong. Try again.';
+            form.parentElement.insertBefore(errorMessage, form);
+            button.disabled = false;
+          });
+      });
     })();
   </script>
 
