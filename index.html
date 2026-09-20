@@ -109,39 +109,9 @@
       padding: 120px 48px 100px;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-video {
-      position: absolute;
-      inset: 0;
-    }
-
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-    }
-
-    .hero-video-bg.active {
-      opacity: 1;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(11, 26, 36, 0.62);
-      transition: background 1.2s ease;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero.overlay-light .hero-overlay {
-      background: rgba(11, 26, 36, 0.38);
+      background:
+        radial-gradient(120% 140% at 20% 0%, rgba(61, 89, 66, 0.35), transparent 55%),
+        linear-gradient(160deg, #0B1A24 0%, #10231E 55%, #0B1A24 100%);
     }
 
     .hero-inner {
@@ -150,14 +120,6 @@
       position: relative;
       z-index: 2;
       text-align: center;
-    }
-
-    .hero-text {
-      transition: opacity 1.2s ease;
-    }
-
-    .hero-text.fade-soft {
-      opacity: 0.85;
     }
 
     .hero h1 {
@@ -628,16 +590,9 @@
   </header>
 
   <section class="hero">
-    <div class="hero-video" aria-hidden="true">
-      <video class="hero-video-bg active" src="assets/video1.mp4" muted playsinline preload="auto"></video>
-      <video class="hero-video-bg" src="assets/video2.mp4" muted playsinline preload="auto"></video>
-    </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
-      <div class="hero-text">
-        <h1>Built to bring you closer.</h1>
-        <p>An independent lab making focused software for the people, teams, and goals that matter to you.</p>
-      </div>
+      <h1>Built to bring you closer.</h1>
+      <p>An independent lab making focused software for the people, teams, and goals that matter to you.</p>
     </div>
   </section>
 
@@ -756,54 +711,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    (function () {
-      var hero = document.querySelector('.hero');
-      var heroText = document.querySelector('.hero-text');
-      var videos = document.querySelectorAll('.hero-video-bg');
-      if (!hero || !heroText || videos.length < 2) return;
-
-      var current = 0;
-      var crossfadeSeconds = 1.5;
-
-      videos.forEach(function (video) {
-        video.muted = true;
-        video.playsInline = true;
-      });
-
-      videos[0].play().catch(function () {});
-
-      function crossfadeTo(nextIndex) {
-        if (nextIndex === current) return;
-        var next = videos[nextIndex];
-        next.currentTime = 0;
-        next.classList.add('active');
-        next.play().catch(function () {});
-        videos[current].classList.remove('active');
-        current = nextIndex;
-      }
-
-      videos.forEach(function (video, index) {
-        video.addEventListener('timeupdate', function () {
-          if (video !== videos[current] || !video.duration) return;
-          if (video.duration - video.currentTime <= crossfadeSeconds && !video.dataset.crossfading) {
-            video.dataset.crossfading = '1';
-            crossfadeTo((index + 1) % videos.length);
-          }
-        });
-
-        video.addEventListener('ended', function () {
-          video.dataset.crossfading = '';
-          video.pause();
-          video.currentTime = 0;
-        });
-      });
-
-      setTimeout(function () {
-        heroText.classList.add('fade-soft');
-        hero.classList.add('overlay-light');
-      }, 4000);
-    })();
-
     (function () {
       var form = document.querySelector('.signup-form');
       if (!form || typeof supabase === 'undefined') return;
