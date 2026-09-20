@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seny Labs</title>
-  <meta name="description" content="Seny Labs builds personal software that respects your time, learns how you work, and stays out of the way.">
+  <meta name="description" content="Seny Labs is an independent lab building focused software across wellness, career, entertainment, and community, including Decade, The Bench FC, and Ezzy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Urbanist:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -233,16 +233,120 @@
       margin-bottom: 24px;
     }
 
+    /* Roadmap */
+
+    .roadmap {
+      padding: 64px 0 56px;
+    }
+
+    .roadmap-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .roadmap-head p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .roadmap-track {
+      position: relative;
+      padding: 0 8px;
+    }
+
+    .roadmap-line {
+      position: absolute;
+      top: 11px;
+      left: 8px;
+      right: 8px;
+      height: 1px;
+      background: repeating-linear-gradient(to right, #EBEBEB 0 6px, transparent 6px 11px);
+    }
+
+    .roadmap-stops {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .stop {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      min-width: 0;
+    }
+
+    .stop:hover .stop-name {
+      color: #0F0F0F;
+    }
+
+    .stop:hover .stop-dot {
+      transform: scale(1.15);
+    }
+
+    .stop-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--dot, #888);
+      border: 4px solid #F7F3EE;
+      box-shadow: 0 0 0 1px var(--dot, #888);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .stop.is-future .stop-dot {
+      background: #F7F3EE;
+      box-shadow: 0 0 0 1px var(--dot, #888) inset, 0 0 0 1px var(--dot, #888);
+    }
+
+    .stop-vertical {
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dot, #888);
+      font-weight: 500;
+    }
+
+    .stop-name {
+      font-weight: 600;
+      font-size: 16px;
+      color: #1A1A1A;
+      letter-spacing: -0.01em;
+      transition: color 0.15s ease;
+    }
+
+    .stop-status {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+
     /* Products */
 
     .products {
-      padding: 80px 0 64px;
+      padding: 8px 0 64px;
+    }
+
+    .products-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .product-card {
       border: none;
       border-radius: 12px;
-      padding: 40px;
+      padding: 36px 40px;
       background: #F0EDE8;
       display: flex;
       gap: 40px;
@@ -251,19 +355,29 @@
 
     .product-content {
       flex: 1;
+      min-width: 0;
+    }
+
+    .product-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      font-weight: 500;
+      margin-bottom: 10px;
     }
 
     .product-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     .product-card h2 {
-      font-family: 'Urbanist', sans-serif;
       font-weight: 600;
-      font-size: 24px;
+      font-size: 23px;
       letter-spacing: -0.02em;
       color: #1A1A1A;
     }
@@ -274,15 +388,15 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       font-weight: 500;
-      padding-top: 6px;
+      padding-top: 5px;
+      white-space: nowrap;
     }
 
     .product-body p {
-      font-family: 'Inter Tight', sans-serif;
       font-size: 15px;
       color: #666;
       line-height: 1.75;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .product-body p:last-of-type {
@@ -290,32 +404,43 @@
     }
 
     .product-closer {
-      font-family: 'Inter Tight', sans-serif;
       font-size: 15px;
       color: #1A1A1A;
       font-weight: 600;
-      margin-top: 24px;
+      margin-top: 20px;
+      display: inline-block;
     }
 
-    /* Phone mockup */
+    a.product-closer:hover {
+      color: #3D5942;
+    }
 
-    .phone-mockup {
-      width: 200px;
+    /* Philosophy teaser */
+
+    .philosophy-teaser {
+      padding: 56px 0;
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .philosophy-teaser blockquote {
+      font-size: 22px;
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+      max-width: 640px;
+      color: #1A1A1A;
+      font-weight: 400;
+    }
+
+    .philosophy-teaser .pt-link {
       flex-shrink: 0;
-    }
-
-    .phone-frame {
-      background: #000;
-      border-radius: 28px;
-      border: 3px solid #2A2A2A;
-      padding: 8px;
-      overflow: hidden;
-    }
-
-    .phone-frame img {
-      width: 100%;
-      display: block;
-      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #0F0F0F;
+      border-bottom: 1px solid #0F0F0F;
+      padding-bottom: 2px;
+      white-space: nowrap;
     }
 
     /* Signup */
@@ -432,9 +557,24 @@
         flex-direction: column;
       }
 
-      .phone-mockup {
-        width: 160px;
-        align-self: center;
+      .roadmap-line {
+        display: none;
+      }
+
+      .roadmap-stops {
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .stop {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .philosophy-teaser {
+        flex-direction: column;
+        gap: 20px;
       }
 
       .signup {
@@ -495,31 +635,45 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-text">
-        <h1>Tools for the long game.</h1>
-        <p>Software that keeps you moving.</p>
+        <h1>Built to bring you closer.</h1>
+        <p>An independent lab making focused software for the people, teams, and goals that matter to you.</p>
       </div>
     </div>
   </section>
 
   <main>
 
-  <section class="products" id="products">
-    <div class="section-label">Products</div>
-    <div class="product-card">
-      <div class="product-content">
-        <div class="product-header">
-          <h2>Decade</h2>
-          <span class="product-status">Coming soon</span>
-        </div>
-        <div class="product-body">
-          <p>A training partner that programs your workouts. Tell it what equipment you have, how much time you've got, and it builds the session. It remembers your machine settings, adjusts when you're dragging, and lets you swap exercises mid-workout if something feels off.</p>
-          <p>Every session feeds the next one. The more you train, the sharper it gets.</p>
-        </div>
-        <div class="product-closer">You show up. It handles the rest.</div>
-      </div>
-      <div class="phone-mockup">
-        <div class="phone-frame">
-          <img src="assets/decade-preview.png" alt="Decade app home screen showing today's workout session">
+  <section class="roadmap">
+    <div class="roadmap-head">
+      <div class="section-label">The lab</div>
+      <p>One studio. Four verticals. Shipped in order of readiness.</p>
+    </div>
+    <div class="roadmap-track">
+      <div class="roadmap-line" aria-hidden="true"></div>
+      <div class="roadmap-stops">
+        <a class="stop" href="#bench" style="--dot: #A85326">
+          <span class="stop-dot"></span>
+          <span class="stop-vertical">Entertainment</span>
+          <span class="stop-name">The Bench FC</span>
+          <span class="stop-status">In final testing</span>
+        </a>
+        <a class="stop" href="#ezzy" style="--dot: #35526E">
+          <span class="stop-dot"></span>
+          <span class="stop-vertical">Career</span>
+          <span class="stop-name">Ezzy</span>
+          <span class="stop-status">Launching Dec 2026</span>
+        </a>
+        <a class="stop" href="#decade" style="--dot: #3D5942">
+          <span class="stop-dot"></span>
+          <span class="stop-vertical">Wellness</span>
+          <span class="stop-name">Decade</span>
+          <span class="stop-status">In development</span>
+        </a>
+        <div class="stop is-future" style="--dot: #8C4B67">
+          <span class="stop-dot"></span>
+          <span class="stop-vertical">Community</span>
+          <span class="stop-name">Unnamed</span>
+          <span class="stop-status">In development</span>
         </div>
       </div>
     </div>
@@ -527,17 +681,76 @@
 
   <div class="divider"></div>
 
+  <section class="products" id="products">
+    <div class="products-list">
+
+      <div class="product-card" id="bench">
+        <div class="product-content">
+          <div class="product-eyebrow">Entertainment</div>
+          <div class="product-header">
+            <h2>The Bench FC</h2>
+            <span class="product-status">In final testing</span>
+          </div>
+          <div class="product-body">
+            <p>The community app for football fans. Predict every match, pick the players who'll decide it, and argue it out in live match chat, across the Premier League, La Liga, Serie A, Bundesliga, Ligue 1, MLS, the Champions League, and the World Cup.</p>
+            <p>Launching September 2026 on iOS, free. Android arrives January 2027.</p>
+          </div>
+          <a class="product-closer" href="https://thebenchfc.com" target="_blank" rel="noopener">Visit thebenchfc.com &rarr;</a>
+        </div>
+      </div>
+
+      <div class="product-card" id="ezzy">
+        <div class="product-content">
+          <div class="product-eyebrow">Career</div>
+          <div class="product-header">
+            <h2>Ezzy</h2>
+            <span class="product-status">Launching Dec 2026</span>
+          </div>
+          <div class="product-body">
+            <p>An AI career coach that replaces the seven tabs most candidates juggle to prep. Drop in a resume, research the company, practice questions, and run a full mock interview, all in one place that remembers your last session.</p>
+          </div>
+          <a class="product-closer" href="https://meetezzy.com" target="_blank" rel="noopener">Visit meetezzy.com &rarr;</a>
+        </div>
+      </div>
+
+      <div class="product-card" id="decade">
+        <div class="product-content">
+          <div class="product-eyebrow">Wellness</div>
+          <div class="product-header">
+            <h2>Decade</h2>
+            <span class="product-status">In development</span>
+          </div>
+          <div class="product-body">
+            <p>A fitness and wellness partner that keeps you consistent, not just in the gym. It builds your workouts around the equipment and time you have, remembers your machine settings, and adjusts when you're dragging, while helping you stay on track the rest of the week too.</p>
+            <p>Every session feeds the next one. The more you use it, the better it understands how you actually operate.</p>
+          </div>
+          <div class="product-closer">You show up. It handles the rest.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="philosophy-teaser">
+    <blockquote>&ldquo;Every app we build does one job: connect you to something that matters, then get out of the way.&rdquo;</blockquote>
+    <a class="pt-link" href="philosophy.html">Read our philosophy &rarr;</a>
+  </section>
+
+  <div class="divider"></div>
+
   <section class="signup">
-    <p>Get notified when Decade launches.</p>
+    <p>Sign up for news and launches.</p>
     <form class="signup-form" action="#" method="POST">
       <input type="email" placeholder="you@email.com" required>
-      <button type="submit">Notify me</button>
+      <button type="submit">Sign up</button>
     </form>
   </section>
 
   </main>
     <footer>
-    <span>&copy; 2026 Seny Labs LLC &mdash; New York, NY</span>
+    <span>&copy; 2026 Seny Labs LLC, New York, NY</span>
     <a href="privacy.html">Privacy Policy</a>
   </footer>
 
