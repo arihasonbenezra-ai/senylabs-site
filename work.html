@@ -150,6 +150,44 @@
       line-height: 1.6;
     }
 
+    /* Tools */
+
+    .tools { padding: 8px 0 12px; }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .tool-row:last-child { border-bottom: 0; }
+
+    .tool-row .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .tool-row .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 0;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .tool-row .list span + span::before {
+      content: '/';
+      color: var(--ink-3);
+      margin: 0 14px;
+    }
+
     /* Form */
 
     .inquiry {
@@ -300,6 +338,7 @@
       .grid3 > div, .grid3 > div:not(:first-child) { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
       .grid3 > div:last-child { border-bottom: 0; }
       .inquiry { grid-template-columns: 1fr; gap: 40px; }
+      .tool-row { grid-template-columns: 1fr; gap: 10px; }
     }
 
     @media (max-width: 640px) {
@@ -410,6 +449,29 @@
             <div class="k">03</div>
             <h3>Build in the open.</h3>
             <p>Weekly check-ins, a staging link from the first week, and the repository in your name when we are done.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>03 &nbsp;/&nbsp; Tools</h2>
+          <span class="mono">what we reach for</span>
+        </div>
+        <div class="tools">
+          <div class="tool-row">
+            <div class="label">Languages</div>
+            <div class="list"><span>Python</span><span>SQL</span><span>JavaScript</span></div>
+          </div>
+          <div class="tool-row">
+            <div class="label">Data and models</div>
+            <div class="list"><span>pandas</span><span>PostgreSQL</span><span>Current LLM APIs</span><span>Custom model training</span></div>
+          </div>
+          <div class="tool-row">
+            <div class="label">Platforms</div>
+            <div class="list"><span>Supabase</span><span>Vercel</span><span>Cloud infrastructure</span></div>
           </div>
         </div>
       </div>
