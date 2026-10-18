@@ -430,11 +430,11 @@
     /* Contact band */
 
     .contact {
-      padding: 72px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 32px;
+      padding: 72px 0;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: start;
     }
 
     .contact h2 {
@@ -442,14 +442,28 @@
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       letter-spacing: -0.03em;
       line-height: 1.1;
-      max-width: 20ch;
     }
 
-    .contact a.mail {
-      font-family: var(--mono);
+    .contact .lede {
+      margin-top: 14px;
       font-size: 15px;
+      color: var(--ink-2);
+      max-width: 40ch;
+    }
+
+    .contact-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact a.mail,
+    .contact a.ghost {
+      font-family: var(--mono);
+      font-size: 14px;
       color: var(--ink);
-      padding: 14px 18px;
+      padding: 13px 18px;
       border: 1px solid var(--line-2);
       border-radius: 8px;
       display: inline-flex;
@@ -459,8 +473,67 @@
       white-space: nowrap;
     }
 
-    .contact a.mail:hover { border-color: var(--accent); background: rgba(163, 230, 53, 0.06); }
+    .contact a.mail:hover,
+    .contact a.ghost:hover { border-color: var(--accent); background: rgba(163, 230, 53, 0.06); }
     .contact a.mail .dot { animation: none; box-shadow: none; }
+
+    .contact .k {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 16px;
+    }
+
+    .notify {
+      display: flex;
+      gap: 8px;
+    }
+
+    .notify input {
+      flex: 1;
+      min-width: 0;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--ink);
+      background: #111;
+      border: 1px solid var(--line-2);
+      border-radius: 8px;
+      padding: 13px 14px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .notify input::placeholder { color: var(--ink-3); }
+    .notify input:focus { border-color: var(--accent); }
+
+    .notify button {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: #0A0A0A;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      padding: 13px 18px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .notify button:hover { background: var(--accent); border-color: var(--accent); }
+    .notify button:disabled { opacity: 0.5; cursor: default; }
+
+    .notify-note {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    .notify-note.ok { color: var(--accent); }
+    .notify-note.err { color: var(--ink-2); }
 
     /* Footer */
 
@@ -488,6 +561,7 @@
       .row .thumb { grid-row: 1 / 4; grid-column: 3; width: 120px; height: 150px; }
       .thumb .mock-phone { right: 12px; top: 20px; width: 52px; height: 110px; }
       .how { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; gap: 44px; }
       .how > div { padding: 28px 24px 32px 0; border-bottom: 1px solid var(--line); }
       .how > div:nth-child(2n) { border-right: 0; }
       .how > div:nth-child(n+3) { border-bottom: 0; }
@@ -496,6 +570,7 @@
 
     @media (max-width: 640px) {
       .wrap { padding: 0 16px; }
+      .header-right a:not(:last-child) { display: none; }
       .hero { padding: 88px 0 72px; }
       .hero .kicker { flex-direction: column; gap: 6px; }
       .row { grid-template-columns: 1fr 96px; }
@@ -509,7 +584,8 @@
       .how { grid-template-columns: 1fr; }
       .how > div, .how > div:not(:first-child) { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
       .how > div:last-child { border-bottom: 0; }
-      .contact { flex-direction: column; align-items: flex-start; padding: 56px 16px; }
+      .contact { grid-template-columns: 1fr; gap: 44px; padding: 56px 0; }
+      .notify { flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -744,6 +820,7 @@
       <nav class="header-right mono">
         <a href="#index">Index</a>
         <a href="#how">How we build</a>
+        <a href="work.html">Work with us</a>
       </nav>
     </div>
   </header>
@@ -828,9 +905,25 @@
   </section>
 
   <section id="contact">
-    <div class="wrap contact">
-      <h2>Get in touch.</h2>
-      <a class="mail" href="mailto:info@senylabs.io"><span class="dot"></span>info@senylabs.io</a>
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Get in touch.</h2>
+          <p class="lede">Questions, press, or a project you need built.</p>
+          <div class="contact-actions">
+            <a class="mail" href="mailto:info@senylabs.io"><span class="dot"></span>info@senylabs.io</a>
+            <a class="ghost" href="work.html">Work with us &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <div class="k">Launch notes</div>
+          <form class="notify" action="#" method="POST" novalidate>
+            <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
+            <button type="submit">Notify me</button>
+          </form>
+          <p class="notify-note">One email per launch.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -968,6 +1061,49 @@
       } else {
         setTimeout(start, 400);
       }
+    })();
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (function () {
+      var form = document.querySelector('.notify');
+      if (!form || typeof supabase === 'undefined') return;
+
+      var client = supabase.createClient(
+        'https://jayytlyejlvilxyvoghi.supabase.co',
+        'sb_publishable_-A2RAM0Y9u6uYkzlLkGxbQ_s10CnKnL'
+      );
+
+      var note = form.parentElement.querySelector('.notify-note');
+      var input = form.querySelector('input[type="email"]');
+      var button = form.querySelector('button');
+
+      function say(text, cls) {
+        note.textContent = text;
+        note.className = 'notify-note' + (cls ? ' ' + cls : '');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = input.value.trim();
+        if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          say('Enter a valid email address.', 'err');
+          input.focus();
+          return;
+        }
+        button.disabled = true;
+        client.from('waitlist').insert({ email: email }).then(function (res) {
+          if (!res.error) { form.remove(); say("You're on the list.", 'ok'); return; }
+          if (res.error.code === '23505') { form.remove(); say('Already on the list.', 'ok'); return; }
+          say('That did not go through. Try again.', 'err');
+          button.disabled = false;
+        }).catch(function () {
+          say('That did not go through. Try again.', 'err');
+          button.disabled = false;
+        });
+      });
     })();
   </script>
 
