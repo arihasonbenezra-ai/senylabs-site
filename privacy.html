@@ -3,274 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Seny Labs</title>
-  <meta name="description" content="Seny Labs privacy policy.">
+  <title>Privacy · Seny Labs</title>
+  <meta name="description" content="Privacy policy for senylabs.io, the website of Seny Labs LLC.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 50 50%27%3E%3Crect width=%2750%27 height=%2750%27 rx=%2710%27 fill=%27%230A0A0A%27/%3E%3Cg stroke=%27%23F7F3EE%27 stroke-width=%272%27%3E%3Cline x1=%2715%27 y1=%2710%27 x2=%2730%27 y2=%2720%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2742%27 y2=%2712%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2722%27 y2=%2738%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2740%27 y2=%2735%27/%3E%3Cline x1=%2722%27 y1=%2738%27 x2=%2740%27 y2=%2735%27/%3E%3C/g%3E%3Cg fill=%27%23F7F3EE%27%3E%3Ccircle cx=%2715%27 cy=%2710%27 r=%274.5%27/%3E%3Ccircle cx=%2730%27 cy=%2720%27 r=%276%27/%3E%3Ccircle cx=%2742%27 cy=%2712%27 r=%273.5%27/%3E%3Ccircle cx=%2722%27 cy=%2738%27 r=%274.5%27/%3E%3Ccircle cx=%2740%27 cy=%2735%27 r=%274%27/%3E%3C/g%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0A0A0A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #0A0A0A;
+      --line: #1F1F1F;
+      --line-2: #2A2A2A;
+      --ink: #F7F3EE;
+      --ink-2: #A8A39B;
+      --ink-3: #6B6760;
+      --accent: #A3E635;
+      --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      background: #F7F3EE;
-      color: #0F0F0F;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    a {
-      color: #666;
-      text-decoration: none;
-      transition: color 0.15s ease;
+    ::selection { background: var(--accent); color: #0A0A0A; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .mono {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: var(--ink-3);
     }
 
-    a:hover {
-      color: #333;
-    }
-
-    a:focus-visible {
-      outline: 2px solid #0F0F0F;
-      outline-offset: 4px;
-    }
+    .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 40px; }
 
     header {
-      padding: 24px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #E5E0D8;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .wordmark {
-      font-weight: 600;
-      font-size: 24px;
-      color: #0F0F0F;
-      letter-spacing: -0.02em;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    header .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; }
+
+    .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 15px; letter-spacing: -0.01em; }
+    .wordmark svg { width: 24px; height: 24px; }
+    .wordmark .node { animation: node-glow 2.5s ease-in-out infinite; }
+    .wordmark .nd1 { animation-delay: 0s; }
+    .wordmark .nd2 { animation-delay: 0.3s; }
+    .wordmark .nd3 { animation-delay: 0.6s; }
+    .wordmark .nd4 { animation-delay: 0.9s; }
+    .wordmark .nd5 { animation-delay: 1.2s; }
+    @keyframes node-glow { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+    .header-right { display: flex; align-items: center; gap: 28px; }
+    .header-right a { color: var(--ink-2); transition: color 0.15s ease; }
+    .header-right a:hover { color: var(--ink); }
+
+    main { flex: 1; }
+
+    .page-head {
+      padding: 96px 0 56px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .logo-mark .node { animation: node-glow 2.5s ease-in-out infinite; }
-    .logo-mark .conn { stroke-dasharray: 60; stroke-dashoffset: 60; animation: conn-trace 1.5s ease forwards; fill: none; }
-    .logo-mark .nd1 { animation-delay: 0s; }
-    .logo-mark .nd2 { animation-delay: 0.3s; }
-    .logo-mark .nd3 { animation-delay: 0.6s; }
-    .logo-mark .nd4 { animation-delay: 0.9s; }
-    .logo-mark .nd5 { animation-delay: 1.2s; }
-    .logo-mark .cd1 { animation-delay: 0.1s; }
-    .logo-mark .cd2 { animation-delay: 0.4s; }
-    .logo-mark .cd3 { animation-delay: 0.7s; }
-    .logo-mark .cd4 { animation-delay: 1.0s; }
-    .logo-mark .cd5 { animation-delay: 1.3s; }
+    .page-head .kicker { display: flex; gap: 24px; margin-bottom: 24px; }
 
-    @keyframes node-glow { 0%,100% { opacity: 0.25; } 50% { opacity: 0.85; } }
-    @keyframes conn-trace { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
-
-    .wordmark:hover {
-      color: #0F0F0F;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-    }
-
-    nav a {
-      font-size: 13px;
-      font-weight: 400;
-      color: #666;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 48px;
-    }
-
-    .page-title {
-      padding: 80px 0 60px;
-    }
-
-    .page-title h1 {
-      font-weight: 600;
-      font-size: 36px;
-      letter-spacing: -0.03em;
-      color: #0F0F0F;
-    }
-
-    .divider {
-      height: 1px;
-      background: #E5E0D8;
-    }
-
-    .section {
-      padding: 64px 0;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888;
+    .page-head h1 {
       font-weight: 500;
-      margin-bottom: 24px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
     }
 
-    .section p {
-      font-size: 17px;
-      color: #555;
-      line-height: 1.8;
-      max-width: 600px;
-    }
+    .policy { max-width: 760px; }
 
-    .approach-grid {
-      display: flex;
-      flex-direction: column;
+    .clause {
+      display: grid;
+      grid-template-columns: 200px 1fr;
       gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .approach-item h3 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #0F0F0F;
-      margin-bottom: 6px;
+    .clause:last-child { border-bottom: 0; }
+
+    .clause h2 {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 4px;
     }
 
-    .approach-item p {
+    .clause h2 span { color: var(--ink-3); margin-right: 10px; }
+
+    .clause p {
       font-size: 16px;
-      color: #555;
       line-height: 1.7;
-      max-width: 540px;
+      color: var(--ink-2);
     }
 
-    footer {
-      margin-top: auto;
-      padding: 24px 48px;
-      border-top: 1px solid #E5E0D8;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .clause p + p { margin-top: 12px; }
+
+    .clause a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-2);
+      transition: border-color 0.15s ease;
     }
 
-    footer span {
-      font-size: 12px;
-      color: #888;
-    }
+    .clause a:hover { border-color: var(--accent); }
 
-    footer a {
-      font-size: 12px;
-      color: #666;
-    }
+    footer { margin-top: auto; padding: 24px 0 32px; border-top: 1px solid var(--line); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; }
+    footer a { color: var(--ink-3); transition: color 0.15s ease; }
+    footer a:hover { color: var(--ink); }
 
     @media (max-width: 640px) {
-      header {
-        padding: 20px 24px;
-      }
-
-      nav {
-        gap: 20px;
-      }
-
-      main {
-        padding: 0 24px;
-      }
-
-      .page-title {
-        padding: 48px 0 40px;
-      }
-
-      .section {
-        padding: 48px 0;
-      }
-
-      footer {
-        padding: 20px 24px;
-      }
+      .wrap { padding: 0 16px; }
+      .page-head { padding: 64px 0 40px; }
+      .page-head .kicker { flex-direction: column; gap: 6px; }
+      .clause { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-      }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html" class="wordmark">
-      <svg class="logo-mark" width="32" height="32" viewBox="0 0 50 50" aria-hidden="true">
-        <line class="conn cd1" x1="15" y1="10" x2="30" y2="20" stroke="#0F0F0F" stroke-width="1.2"/>
-        <line class="conn cd2" x1="30" y1="20" x2="42" y2="12" stroke="#0F0F0F" stroke-width="1.2"/>
-        <line class="conn cd3" x1="30" y1="20" x2="22" y2="38" stroke="#0F0F0F" stroke-width="1.2"/>
-        <line class="conn cd4" x1="30" y1="20" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
-        <line class="conn cd5" x1="22" y1="38" x2="40" y2="35" stroke="#0F0F0F" stroke-width="1.2"/>
-        <circle class="node nd1" cx="15" cy="10" r="4" fill="#0F0F0F"/>
-        <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#0F0F0F"/>
-        <circle class="node nd3" cx="42" cy="12" r="3" fill="#0F0F0F"/>
-        <circle class="node nd4" cx="22" cy="38" r="4" fill="#0F0F0F"/>
-        <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#0F0F0F"/>
-      </svg>
-      Seny Labs
-    </a>
-    <nav>
-      <a href="index.html#products">Products</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="about.html">About</a>
-    </nav>
+    <div class="wrap">
+      <a href="index.html" class="wordmark">
+        <svg viewBox="0 0 50 50" aria-hidden="true">
+          <line x1="15" y1="10" x2="30" y2="20" stroke="#F7F3EE" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="42" y2="12" stroke="#F7F3EE" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="22" y2="38" stroke="#F7F3EE" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
+          <line x1="22" y1="38" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
+          <circle class="node nd1" cx="15" cy="10" r="4" fill="#F7F3EE"/>
+          <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#F7F3EE"/>
+          <circle class="node nd3" cx="42" cy="12" r="3" fill="#F7F3EE"/>
+          <circle class="node nd4" cx="22" cy="38" r="4" fill="#F7F3EE"/>
+          <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#F7F3EE"/>
+        </svg>
+        Seny Labs
+      </a>
+      <nav class="header-right mono">
+        <a href="index.html#index">Index</a>
+        <a href="index.html#how">How we build</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-  <div class="page-title">
-    <h1>Privacy Policy</h1>
-  </div>
-  <div class="divider"></div>
-  <section class="section">
-    <div class="section-label">Last updated July 5, 2026</div>
-    <p>This privacy policy covers senylabs.io, the website of Seny Labs LLC. Our mobile applications have their own privacy policies, linked from each product.</p>
-  </section>
-  <div class="divider"></div>
-  <section class="section">
-    <div class="section-label">What we collect</div>
-    <p>If you join a product waitlist, we collect your email address. That is the only personal information this website collects. We do not use cookies, analytics, or tracking technologies of any kind.</p>
-  </section>
-  <div class="divider"></div>
-  <section class="section">
-    <div class="section-label">How we use it</div>
-    <p>Your email is used for one purpose: notifying you when the product you signed up for launches. We do not sell, share, or disclose your email to third parties. Emails are stored securely with our infrastructure provider, Supabase.</p>
-  </section>
-  <div class="divider"></div>
-  <section class="section">
-    <div class="section-label">Your rights</div>
-    <p>You can request access to or deletion of your email at any time by contacting <a href="mailto:info@senylabs.io">info@senylabs.io</a>. We will process deletion requests within 30 days.</p>
-  </section>
-  <div class="divider"></div>
-  <section class="section">
-    <div class="section-label">Contact</div>
-    <p>Seny Labs LLC<br>New York, USA<br><a href="mailto:info@senylabs.io">info@senylabs.io</a></p>
-  </section>
+    <div class="wrap">
+      <div class="page-head">
+        <div class="kicker mono">
+          <span>Legal</span>
+          <span>Last updated July 5, 2026</span>
+        </div>
+        <h1>Privacy Policy</h1>
+      </div>
+
+      <div class="policy">
+        <div class="clause">
+          <h2><span>01</span>Scope</h2>
+          <p>This privacy policy covers senylabs.io, the website of Seny Labs LLC. Our applications have their own privacy policies, linked from each product.</p>
+        </div>
+        <div class="clause">
+          <h2><span>02</span>What we collect</h2>
+          <p>If you join a product waitlist, we collect your email address. That is the only personal information this website collects. We do not use cookies, analytics, or tracking technologies of any kind.</p>
+        </div>
+        <div class="clause">
+          <h2><span>03</span>How we use it</h2>
+          <p>Your email is used for one purpose: notifying you when the product you signed up for launches. We do not sell, share, or disclose your email to third parties. Emails are stored securely with our infrastructure provider, Supabase.</p>
+        </div>
+        <div class="clause">
+          <h2><span>04</span>Your rights</h2>
+          <p>You can request access to or deletion of your email at any time using the contact details below. We will process deletion requests within 30 days.</p>
+        </div>
+        <div class="clause">
+          <h2><span>05</span>Contact</h2>
+          <p>Seny Labs LLC<br>New York, USA<br><a href="mailto:info@senylabs.io">info@senylabs.io</a></p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <span>&copy; 2026 Seny Labs LLC</span>
-    <a href="privacy.html">Privacy Policy</a>
+    <div class="wrap mono">
+      <span>&copy; 2026 Seny Labs LLC &middot; New York, NY</span>
+      <a href="privacy.html">Privacy</a>
+    </div>
   </footer>
 
 </body>
