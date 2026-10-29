@@ -653,7 +653,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
       cursor: none;
       overflow: hidden;
     }
@@ -691,8 +691,8 @@
 
     #intro .intro-orb {
       position: relative;
-      width: 150px;
-      height: 150px;
+      width: 260px;
+      height: 260px;
       display: grid;
       place-items: center;
       border-radius: 50%;
@@ -704,7 +704,7 @@
     #intro .intro-orb::before {
       content: '';
       position: absolute;
-      inset: -40px;
+      inset: -70px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(247, 243, 238, 0.14) 0%, rgba(247, 243, 238, 0.05) 40%, transparent 70%);
       opacity: 0;
@@ -715,11 +715,11 @@
     #intro.is-lit .intro-orb::before { opacity: 1; }
 
     #intro .intro-mark {
-      width: 150px;
-      height: 150px;
+      width: 260px;
+      height: 260px;
       position: relative;
       z-index: 1;
-      filter: drop-shadow(0 0 10px rgba(247, 243, 238, 0.45));
+      filter: drop-shadow(0 0 14px rgba(247, 243, 238, 0.45));
     }
 
     #intro .intro-mark .conn {
@@ -746,7 +746,7 @@
 
     #intro .intro-word {
       font-weight: 600;
-      font-size: 30px;
+      font-size: 52px;
       letter-spacing: -0.02em;
       color: #F7F3EE;
       display: flex;
@@ -773,8 +773,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 22px;
-      height: 30px;
+      width: 26px;
+      height: 35px;
       opacity: 0;
       transform: translate(42vw, 34vh);
       transition: transform 1.5s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.5s ease;
@@ -783,8 +783,8 @@
       pointer-events: none;
     }
 
-    #intro.is-pointing .intro-cursor { opacity: 1; transform: translate(13px, -52px); }
-    #intro.is-clicking .intro-cursor { transform: translate(13px, -52px) scale(0.86); transition-duration: 0.09s; }
+    #intro.is-pointing .intro-cursor { opacity: 1; transform: translate(8px, -77px); }
+    #intro.is-clicking .intro-cursor { transform: translate(8px, -77px) scale(0.86); transition-duration: 0.09s; }
 
     #intro .intro-ripple {
       position: absolute;
@@ -796,26 +796,27 @@
       border-radius: 50%;
       border: 1.5px solid rgba(247, 243, 238, 0.7);
       opacity: 0;
-      transform: translate(15px, -50px) scale(0.4);
+      transform: translate(10px, -75px) scale(0.4);
       pointer-events: none;
     }
 
     #intro.is-clicking .intro-ripple { animation: intro-ripple 0.55s ease-out forwards; }
 
     @keyframes intro-ripple {
-      from { opacity: 0.8; transform: translate(15px, -50px) scale(0.4); }
-      to   { opacity: 0;   transform: translate(15px, -50px) scale(5); }
+      from { opacity: 0.8; transform: translate(10px, -75px) scale(0.4); }
+      to   { opacity: 0;   transform: translate(10px, -75px) scale(5); }
     }
 
     body.intro-locked { overflow: hidden; }
 
     @media (max-width: 640px) {
-      #intro .intro-orb, #intro .intro-mark { width: 116px; height: 116px; }
-      #intro .intro-word { font-size: 24px; }
+      #intro .intro-orb, #intro .intro-mark { width: 150px; height: 150px; }
+      #intro .intro-orb::before { inset: -40px; }
+      #intro .intro-word { font-size: 30px; }
       #intro .intro-cursor { transform: translate(34vw, 28vh); }
-      #intro.is-pointing .intro-cursor { transform: translate(10px, -43px); }
-      #intro.is-clicking .intro-cursor { transform: translate(10px, -43px) scale(0.86); }
-      #intro .intro-ripple { transform: translate(12px, -41px) scale(0.4); }
+      #intro.is-pointing .intro-cursor { transform: translate(4px, -52px); }
+      #intro.is-clicking .intro-cursor { transform: translate(4px, -52px) scale(0.86); }
+      #intro .intro-ripple { transform: translate(6px, -50px) scale(0.4); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -829,7 +830,7 @@
     <div class="intro-panel top"></div>
     <div class="intro-panel bottom"></div>
     <div class="intro-orb">
-      <svg class="intro-mark" viewBox="0 0 50 50" aria-hidden="true">
+      <svg class="intro-mark" viewBox="3 -1 50 50" aria-hidden="true">
         <line class="conn cd1" x1="15" y1="10" x2="30" y2="20" stroke="#F7F3EE" stroke-width="1.2"/>
         <line class="conn cd2" x1="30" y1="20" x2="42" y2="12" stroke="#F7F3EE" stroke-width="1.2"/>
         <line class="conn cd3" x1="30" y1="20" x2="22" y2="38" stroke="#F7F3EE" stroke-width="1.2"/>
