@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work with us · Seny Labs</title>
   <meta name="description" content="Seny Labs takes on a limited number of outside projects: product design, websites, web apps, mobile apps, AI features, and custom machine learning models.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 50 50%27%3E%3Crect width=%2750%27 height=%2750%27 rx=%2710%27 fill=%27%230A0A0A%27/%3E%3Cg stroke=%27%23F7F3EE%27 stroke-width=%272%27%3E%3Cline x1=%2715%27 y1=%2710%27 x2=%2730%27 y2=%2720%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2742%27 y2=%2712%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2722%27 y2=%2738%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2740%27 y2=%2735%27/%3E%3Cline x1=%2722%27 y1=%2738%27 x2=%2740%27 y2=%2735%27/%3E%3C/g%3E%3Cg fill=%27%23F7F3EE%27%3E%3Ccircle cx=%2715%27 cy=%2710%27 r=%274.5%27/%3E%3Ccircle cx=%2730%27 cy=%2720%27 r=%276%27/%3E%3Ccircle cx=%2742%27 cy=%2712%27 r=%273.5%27/%3E%3Ccircle cx=%2722%27 cy=%2738%27 r=%274.5%27/%3E%3Ccircle cx=%2740%27 cy=%2735%27 r=%274%27/%3E%3C/g%3E%3C/svg%3E">
-  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 50 50%27%3E%3Crect width=%2750%27 height=%2750%27 rx=%2710%27 fill=%27%23000000%27/%3E%3Cg stroke=%27%23EDEDED%27 stroke-width=%272%27%3E%3Cline x1=%2715%27 y1=%2710%27 x2=%2730%27 y2=%2720%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2742%27 y2=%2712%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2722%27 y2=%2738%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2740%27 y2=%2735%27/%3E%3Cline x1=%2722%27 y1=%2738%27 x2=%2740%27 y2=%2735%27/%3E%3C/g%3E%3Cg fill=%27%23EDEDED%27%3E%3Ccircle cx=%2715%27 cy=%2710%27 r=%274.5%27/%3E%3Ccircle cx=%2730%27 cy=%2720%27 r=%276%27/%3E%3Ccircle cx=%2742%27 cy=%2712%27 r=%273.5%27/%3E%3Ccircle cx=%2722%27 cy=%2738%27 r=%274.5%27/%3E%3Ccircle cx=%2740%27 cy=%2735%27 r=%274%27/%3E%3C/g%3E%3C/svg%3E">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0A0A0A;
+      --bg: #000000;
+      --bg-2: #0A0A0A;
       --line: #1F1F1F;
-      --line-2: #2A2A2A;
-      --ink: #F7F3EE;
-      --ink-2: #A8A39B;
-      --ink-3: #6B6760;
-      --accent: #A3E635;
+      --line-2: #333333;
+      --ink: #EDEDED;
+      --ink-2: #A1A1A1;
+      --ink-3: #666666;
+      --err: #FF6166;
       --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
@@ -36,322 +37,260 @@
       flex-direction: column;
     }
 
-    ::selection { background: var(--accent); color: #0A0A0A; }
+    ::selection { background: var(--ink); color: var(--bg); }
     a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-    .mono {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.02em;
-      color: var(--ink-3);
+    .wrap {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
     }
 
-    .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .wrap.flush { padding: 0; }
+
+    main { flex: 1; }
+    section { border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(10, 10, 10, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
 
-    header .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    header .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; }
 
-    .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 15px; letter-spacing: -0.01em; }
-    .wordmark svg { width: 24px; height: 24px; }
-    .wordmark .node { animation: node-glow 2.5s ease-in-out infinite; }
-    .wordmark .nd1 { animation-delay: 0s; }
-    .wordmark .nd2 { animation-delay: 0.3s; }
-    .wordmark .nd3 { animation-delay: 0.6s; }
-    .wordmark .nd4 { animation-delay: 0.9s; }
-    .wordmark .nd5 { animation-delay: 1.2s; }
-    @keyframes node-glow { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+    .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+    .wordmark svg { width: 22px; height: 22px; }
 
-    .header-right { display: flex; align-items: center; gap: 28px; }
-    .header-right a { color: var(--ink-2); transition: color 0.15s ease; }
-    .header-right a:hover { color: var(--ink); }
+    nav { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+    nav a { color: var(--ink-2); transition: color 0.15s ease; }
+    nav a:hover { color: var(--ink); }
 
-    main { flex: 1; }
-
-    .page-head {
-      padding: 96px 0 56px;
-      border-bottom: 1px solid var(--line);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 40px;
+      padding: 0 18px;
+      border-radius: 9999px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
-    .page-head .kicker { display: flex; gap: 24px; margin-bottom: 24px; }
+    .btn.primary { background: var(--ink); color: #000; border-color: var(--ink); }
+    .btn.primary:hover { background: #CCCCCC; border-color: #CCCCCC; }
+    nav a.btn.primary, nav a.btn.primary:hover { color: #000; }
+    .btn.secondary { background: transparent; color: var(--ink); border-color: var(--line-2); }
+    .btn.secondary:hover { background: var(--bg-2); border-color: #555555; }
+    .btn.sm { height: 32px; padding: 0 14px; font-size: 13px; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+
+    /* Page head */
+
+    .page-head { padding: 104px 32px 72px; }
 
     .page-head h1 {
-      font-weight: 500;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      letter-spacing: -0.035em;
-      line-height: 1.04;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: -0.045em;
+      line-height: 1.02;
       max-width: 16ch;
     }
 
     .page-head .lede {
-      margin-top: 28px;
-      font-size: 17px;
-      line-height: 1.6;
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.55;
       color: var(--ink-2);
       max-width: 52ch;
     }
 
-    .section-head {
-      padding: 28px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--line);
-    }
+    .page-head .actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Section heads and cells */
+
+    .section-head { padding: 64px 32px 40px; }
 
     .section-head h2 {
-      font-family: var(--mono);
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-2);
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      letter-spacing: -0.035em;
+      line-height: 1.1;
     }
 
-    section { border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
+    .section-head p { margin-top: 10px; font-size: 16px; color: var(--ink-2); max-width: 52ch; }
 
-    .grid4 { display: grid; grid-template-columns: repeat(5, 1fr); }
-    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
-
-    .grid4 > div, .grid3 > div {
-      padding: 36px 32px 40px 0;
-      border-right: 1px solid var(--line);
+    .cells {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line);
     }
 
-    .grid4 > div { padding-right: 24px; }
-    .grid4 > div:not(:first-child), .grid3 > div:not(:first-child) { padding-left: 32px; }
-    .grid4 > div:not(:first-child) { padding-left: 24px; }
-    .grid4 > div:last-child, .grid3 > div:last-child { border-right: 0; }
-
-    .k {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink-3);
-      margin-bottom: 18px;
+    .cell {
+      background: var(--bg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .grid4 h3, .grid3 h3 {
-      font-weight: 500;
-      font-size: 17px;
-      letter-spacing: -0.015em;
-      margin-bottom: 10px;
-    }
-
-    .grid4 p, .grid3 p {
-      font-size: 14px;
-      color: var(--ink-2);
-      line-height: 1.6;
-    }
+    .cell h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; }
+    .cell p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
     /* Tools */
-
-    .tools { padding: 8px 0 12px; }
 
     .tool-row {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 32px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 20px 32px;
+      border-top: 1px solid var(--line);
       align-items: baseline;
     }
 
-    .tool-row:last-child { border-bottom: 0; }
-
-    .tool-row .label {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-    }
+    .tool-row .label { font-size: 14px; font-weight: 500; }
 
     .tool-row .list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 0;
+      gap: 8px;
+    }
+
+    .tool-row .list span {
       font-family: var(--mono);
-      font-size: 14px;
-      color: var(--ink);
+      font-size: 13px;
+      color: var(--ink-2);
+      padding: 4px 10px;
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
     }
 
-    .tool-row .list span + span::before {
-      content: '/';
-      color: var(--ink-3);
-      margin: 0 14px;
-    }
-
-    /* Form */
+    /* Inquiry form */
 
     .inquiry {
-      padding: 48px 0 72px;
       display: grid;
       grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: start;
+      gap: 1px;
+      background: var(--line);
     }
 
+    .inquiry > div { background: var(--bg); padding: 64px 32px; }
+
     .inquiry .aside h2 {
-      font-weight: 500;
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      letter-spacing: -0.03em;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      letter-spacing: -0.035em;
       line-height: 1.1;
     }
 
-    .inquiry .aside p {
-      margin-top: 14px;
-      font-size: 15px;
-      color: var(--ink-2);
-      max-width: 36ch;
-      line-height: 1.6;
-    }
-
-    .inquiry .aside a { color: var(--ink); border-bottom: 1px solid var(--line-2); }
-    .inquiry .aside a:hover { border-color: var(--accent); }
+    .inquiry .aside p { margin-top: 12px; font-size: 16px; color: var(--ink-2); max-width: 36ch; line-height: 1.6; }
+    .inquiry .aside a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+    .inquiry .aside a:hover { text-decoration-color: var(--ink); }
 
     form.f { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
     form.f .full { grid-column: 1 / -1; }
 
-    form.f label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      margin-bottom: 8px;
-    }
-
-    form.f label span { color: var(--ink-3); text-transform: none; letter-spacing: 0; margin-left: 6px; }
+    form.f label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+    form.f label span { color: var(--ink-3); font-weight: 400; margin-left: 6px; }
 
     form.f input,
     form.f select,
     form.f textarea {
       width: 100%;
-      font-family: var(--mono);
+      height: 40px;
+      padding: 0 12px;
+      font-family: var(--sans);
       font-size: 14px;
       color: var(--ink);
-      background: rgba(247, 243, 238, 0.035);
-      border: 1px solid rgba(247, 243, 238, 0.12);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.04);
-      border-radius: 8px;
-      padding: 13px 14px;
-      outline: none;
-      transition: border-color 0.15s ease;
+      background: var(--bg);
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
       -webkit-appearance: none;
       appearance: none;
     }
 
     form.f select {
-      background-color: rgba(247, 243, 238, 0.035);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23A8A39B' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23A1A1A1' stroke-width='1.5'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 14px center;
+      background-position: right 12px center;
       padding-right: 36px;
     }
 
-    form.f textarea { min-height: 150px; resize: vertical; line-height: 1.55; }
+    form.f textarea { height: auto; min-height: 150px; padding: 10px 12px; resize: vertical; line-height: 1.55; }
     form.f ::placeholder { color: var(--ink-3); }
-    form.f input:focus, form.f select:focus, form.f textarea:focus { border-color: rgba(163, 230, 53, 0.6); }
+    form.f input:focus, form.f select:focus, form.f textarea:focus { outline: none; border-color: #888888; box-shadow: 0 0 0 1px #888888; }
 
-    form.f .actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    form.f .actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    form.f .btn { border-radius: 6px; }
 
-    form.f button {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 13px 22px;
-      color: var(--ink);
-      background: linear-gradient(180deg, rgba(247, 243, 238, 0.10), rgba(247, 243, 238, 0.035));
-      border: 1px solid rgba(247, 243, 238, 0.16);
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.14), 0 1px 2px rgba(0, 0, 0, 0.5);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    form.f button:hover {
-      border-color: rgba(163, 230, 53, 0.55);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.18), 0 0 0 1px rgba(163, 230, 53, 0.15), 0 10px 30px rgba(163, 230, 53, 0.12);
-      transform: translateY(-1px);
-    }
-
-    form.f button::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: -60%;
-      width: 40%;
-      background: linear-gradient(100deg, transparent, rgba(247, 243, 238, 0.18), transparent);
-      transform: skewX(-18deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-    form.f button:hover::after { left: 120%; }
-
-    form.f button:disabled { opacity: 0.5; cursor: default; }
-
-    .f-note { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
-    .f-note.ok { color: var(--accent); }
-    .f-note.err { color: var(--ink-2); }
-    .f-note a { color: var(--ink); border-bottom: 1px solid var(--line-2); }
+    .f-note { font-size: 13px; color: var(--ink-3); }
+    .f-note.ok { color: var(--ink); }
+    .f-note.err { color: var(--err); }
+    .f-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
     .sent {
-      padding: 28px;
+      padding: 24px;
       border: 1px solid var(--line-2);
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 15px;
       color: var(--ink-2);
       line-height: 1.6;
     }
 
-    .sent strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 6px; }
+    .sent strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
 
-    footer { margin-top: auto; padding: 24px 0 32px; border-top: 1px solid var(--line); }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; }
-    footer a { color: var(--ink-3); transition: color 0.15s ease; }
+    footer { margin-top: auto; }
+
+    footer .wrap {
+      padding: 24px 32px 32px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+
     footer a:hover { color: var(--ink); }
 
     @media (max-width: 900px) {
-      .grid4 { grid-template-columns: 1fr 1fr; }
-      .grid4 > div, .grid4 > div:not(:first-child) { padding: 28px 24px 32px 0; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
-      .grid4 > div:nth-child(2n) { border-right: 0; padding-left: 24px; }
-      .grid4 > div:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
-      .grid3 { grid-template-columns: 1fr; }
-      .grid3 > div, .grid3 > div:not(:first-child) { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .grid3 > div:last-child { border-bottom: 0; }
-      .inquiry { grid-template-columns: 1fr; gap: 40px; }
+      .cells { grid-template-columns: 1fr 1fr; }
+      .inquiry { grid-template-columns: 1fr; }
+      .inquiry > div { padding: 48px 32px; }
       .tool-row { grid-template-columns: 1fr; gap: 10px; }
     }
 
     @media (max-width: 640px) {
-      .wrap { padding: 0 16px; }
-      .page-head { padding: 64px 0 40px; }
-      .page-head .kicker { flex-direction: column; gap: 6px; }
-      .header-right a:not(:last-child) { display: none; }
-      .grid4 { grid-template-columns: 1fr; }
-      .grid4 > div, .grid4 > div:not(:first-child) { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .grid4 > div:last-child { border-bottom: 0; }
+      .wrap { padding: 0 16px; border-left: 0; border-right: 0; }
+      .wrap.flush { padding: 0; }
+      nav a:not(.btn) { display: none; }
+      .page-head { padding: 72px 16px 56px; }
+      .page-head .lede { font-size: 16px; }
+      .section-head { padding: 48px 16px 28px; }
+      .cells { grid-template-columns: 1fr; }
+      .cell { padding: 24px 16px; }
+      .tool-row { padding: 20px 16px; }
+      .inquiry > div { padding: 40px 16px; }
       form.f { grid-template-columns: 1fr; }
-      .inquiry { padding: 40px 0 56px; }
+      footer .wrap { padding: 20px 16px 28px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -365,94 +304,90 @@
     <div class="wrap">
       <a href="index.html" class="wordmark">
         <svg viewBox="0 0 50 50" aria-hidden="true">
-          <line x1="15" y1="10" x2="30" y2="20" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="42" y2="12" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="22" y2="38" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="22" y1="38" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
-          <circle class="node nd1" cx="15" cy="10" r="4" fill="#F7F3EE"/>
-          <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#F7F3EE"/>
-          <circle class="node nd3" cx="42" cy="12" r="3" fill="#F7F3EE"/>
-          <circle class="node nd4" cx="22" cy="38" r="4" fill="#F7F3EE"/>
-          <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#F7F3EE"/>
+          <line x1="15" y1="10" x2="30" y2="20" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="42" y2="12" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="22" y2="38" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="40" y2="35" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="22" y1="38" x2="40" y2="35" stroke="#EDEDED" stroke-width="1.4"/>
+          <circle cx="15" cy="10" r="4" fill="#EDEDED"/>
+          <circle cx="30" cy="20" r="5.5" fill="#EDEDED"/>
+          <circle cx="42" cy="12" r="3" fill="#EDEDED"/>
+          <circle cx="22" cy="38" r="4" fill="#EDEDED"/>
+          <circle cx="40" cy="35" r="3.5" fill="#EDEDED"/>
         </svg>
         Seny Labs
       </a>
-      <nav class="header-right mono">
-        <a href="index.html#index">Index</a>
+      <nav>
+        <a href="index.html#apps">Apps</a>
         <a href="index.html#how">How we build</a>
-        <a href="#start">Start a project</a>
+        <a href="#start" class="btn primary sm">Start a project</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="wrap">
-      <div class="page-head">
-        <div class="kicker mono">
-          <span>Work with us</span>
-          <span>Design &middot; Websites &middot; Web apps &middot; Mobile apps &middot; AI and machine learning</span>
+    <section>
+      <div class="wrap">
+        <div class="page-head">
+          <h1>Need something built?</h1>
+          <p class="lede">Seny Labs takes on a limited number of outside projects. We design and build the whole thing, from first conversation to launch, and you own the code.</p>
+          <div class="actions">
+            <a href="#start" class="btn primary">Start a project</a>
+            <a href="mailto:info@senylabs.io?subject=Project%20inquiry" class="btn secondary">info@senylabs.io</a>
+          </div>
         </div>
-        <h1>Need something built?</h1>
-        <p class="lede">Seny Labs takes on a limited number of outside projects. We design and build the whole thing, from first conversation to launch, and you own the code.</p>
       </div>
-    </div>
+    </section>
 
     <section id="what">
-      <div class="wrap">
+      <div class="wrap flush">
         <div class="section-head">
-          <h2>01 &nbsp;/&nbsp; What we build</h2>
-          <span class="mono">5 kinds</span>
+          <h2>What we build</h2>
         </div>
-        <div class="grid4">
-          <div>
-            <div class="k">01</div>
+        <div class="cells">
+          <div class="cell">
             <h3>Product design</h3>
             <p>Brand identity, interface design, and clickable prototypes. Research and user flows first, then visual design, then a prototype you can test before any code is written.</p>
           </div>
-          <div>
-            <div class="k">02</div>
+          <div class="cell">
             <h3>Websites</h3>
             <p>Marketing sites, landing pages, and company sites like this one. Hand-built, fast, and easy for you to update.</p>
           </div>
-          <div>
-            <div class="k">03</div>
+          <div class="cell">
             <h3>Web apps</h3>
             <p>Dashboards, internal tools, and customer portals. Accounts, data, and payments included.</p>
           </div>
-          <div>
-            <div class="k">04</div>
+          <div class="cell">
             <h3>Mobile apps</h3>
             <p>iOS and Android, from the first screen to the store listing.</p>
           </div>
-          <div>
-            <div class="k">05</div>
+          <div class="cell">
             <h3>AI and machine learning</h3>
             <p>Assistants, search, and automation inside a product you already have, built on current models. Custom models trained on your data when the available ones are not enough.</p>
+          </div>
+          <div class="cell">
+            <h3>Something else</h3>
+            <p>If it is not on this list, ask anyway. We will tell you quickly whether it is something we can do.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="process">
-      <div class="wrap">
+      <div class="wrap flush">
         <div class="section-head">
-          <h2>02 &nbsp;/&nbsp; How it works</h2>
-          <span class="mono">3 steps</span>
+          <h2>How it works</h2>
         </div>
-        <div class="grid3">
-          <div>
-            <div class="k">01</div>
+        <div class="cells">
+          <div class="cell">
             <h3>Tell us what you need.</h3>
             <p>Use the form below. We reply within two business days with questions or a first scope.</p>
           </div>
-          <div>
-            <div class="k">02</div>
+          <div class="cell">
             <h3>Agree on scope and price.</h3>
             <p>A written scope, a fixed price where the work allows it, and a start date.</p>
           </div>
-          <div>
-            <div class="k">03</div>
+          <div class="cell">
             <h3>Build in the open.</h3>
             <p>Weekly check-ins, a staging link from the first week, and the repository in your name when we are done.</p>
           </div>
@@ -461,84 +396,84 @@
     </section>
 
     <section id="tools">
-      <div class="wrap">
+      <div class="wrap flush">
         <div class="section-head">
-          <h2>03 &nbsp;/&nbsp; Tools</h2>
-          <span class="mono">what we reach for</span>
+          <h2>Tools</h2>
+          <p>What we reach for by default.</p>
         </div>
-        <div class="tools">
-          <div class="tool-row">
-            <div class="label">Design</div>
-            <div class="list"><span>Figma</span><span>Canva</span></div>
-          </div>
-          <div class="tool-row">
-            <div class="label">Languages</div>
-            <div class="list"><span>Python</span><span>SQL</span><span>JavaScript</span><span>TypeScript</span></div>
-          </div>
-          <div class="tool-row">
-            <div class="label">Data and models</div>
-            <div class="list"><span>pandas</span><span>PostgreSQL</span><span>Current LLM APIs</span><span>Custom model training</span></div>
-          </div>
-          <div class="tool-row">
-            <div class="label">Mobile</div>
-            <div class="list"><span>React Native</span><span>Swift</span><span>Kotlin</span></div>
-          </div>
-          <div class="tool-row">
-            <div class="label">Platforms</div>
-            <div class="list"><span>Supabase</span><span>Vercel</span><span>Cloud infrastructure</span></div>
-          </div>
+        <div class="tool-row">
+          <div class="label">Design</div>
+          <div class="list"><span>Figma</span><span>Canva</span></div>
+        </div>
+        <div class="tool-row">
+          <div class="label">Languages</div>
+          <div class="list"><span>Python</span><span>SQL</span><span>JavaScript</span><span>TypeScript</span></div>
+        </div>
+        <div class="tool-row">
+          <div class="label">Data and models</div>
+          <div class="list"><span>pandas</span><span>PostgreSQL</span><span>Current LLM APIs</span><span>Custom model training</span></div>
+        </div>
+        <div class="tool-row">
+          <div class="label">Mobile</div>
+          <div class="list"><span>React Native</span><span>Swift</span><span>Kotlin</span></div>
+        </div>
+        <div class="tool-row">
+          <div class="label">Platforms</div>
+          <div class="list"><span>Supabase</span><span>Vercel</span><span>Cloud infrastructure</span></div>
         </div>
       </div>
     </section>
 
     <section id="start">
-      <div class="wrap">
+      <div class="wrap flush">
         <div class="inquiry">
           <div class="aside">
             <h2>Start a project.</h2>
             <p>A few lines is enough. If you would rather write to us directly, <a href="mailto:info@senylabs.io?subject=Project%20inquiry">info@senylabs.io</a> reaches the same people.</p>
           </div>
-          <form class="f" action="#" method="POST" novalidate>
-            <div>
-              <label for="f-name">Name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div>
-              <label for="f-email">Email</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div>
-              <label for="f-company">Company <span>optional</span></label>
-              <input id="f-company" name="company" type="text" autocomplete="organization">
-            </div>
-            <div>
-              <label for="f-kind">What do you need</label>
-              <select id="f-kind" name="kind">
-                <option value="design">Design work</option>
-                <option value="website">A website</option>
-                <option value="webapp">A web app</option>
-                <option value="mobile">A mobile app</option>
-                <option value="ai">An AI feature</option>
-                <option value="ml">A trained model</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
-            </div>
-            <div class="full">
-              <label for="f-message">Tell us about it</label>
-              <textarea id="f-message" name="message" placeholder="What it is, who it is for, and when you need it." required></textarea>
-            </div>
-            <div class="full actions">
-              <button type="submit">Send</button>
-              <span class="f-note">We reply within two business days.</span>
-            </div>
-          </form>
+          <div>
+            <form class="f" action="#" method="POST" novalidate>
+              <div>
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div>
+                <label for="f-company">Company <span>optional</span></label>
+                <input id="f-company" name="company" type="text" autocomplete="organization">
+              </div>
+              <div>
+                <label for="f-kind">What do you need</label>
+                <select id="f-kind" name="kind">
+                  <option value="design">Design work</option>
+                  <option value="website">A website</option>
+                  <option value="webapp">A web app</option>
+                  <option value="mobile">A mobile app</option>
+                  <option value="ai">An AI feature</option>
+                  <option value="ml">A trained model</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="full">
+                <label for="f-message">Tell us about it</label>
+                <textarea id="f-message" name="message" placeholder="What it is, who it is for, and when you need it." required></textarea>
+              </div>
+              <div class="full actions">
+                <button class="btn primary" type="submit">Send</button>
+                <span class="f-note">We reply within two business days.</span>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap mono">
+    <div class="wrap">
       <span>&copy; 2026 Seny Labs LLC &middot; New York, NY</span>
       <a href="privacy.html">Privacy</a>
     </div>

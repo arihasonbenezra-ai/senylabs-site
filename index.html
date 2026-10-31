@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seny Labs</title>
   <meta name="description" content="Seny Labs is an independent lab building apps around the things people do together.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 50 50%27%3E%3Crect width=%2750%27 height=%2750%27 rx=%2710%27 fill=%27%230A0A0A%27/%3E%3Cg stroke=%27%23F7F3EE%27 stroke-width=%272%27%3E%3Cline x1=%2715%27 y1=%2710%27 x2=%2730%27 y2=%2720%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2742%27 y2=%2712%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2722%27 y2=%2738%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2740%27 y2=%2735%27/%3E%3Cline x1=%2722%27 y1=%2738%27 x2=%2740%27 y2=%2735%27/%3E%3C/g%3E%3Cg fill=%27%23F7F3EE%27%3E%3Ccircle cx=%2715%27 cy=%2710%27 r=%274.5%27/%3E%3Ccircle cx=%2730%27 cy=%2720%27 r=%276%27/%3E%3Ccircle cx=%2742%27 cy=%2712%27 r=%273.5%27/%3E%3Ccircle cx=%2722%27 cy=%2738%27 r=%274.5%27/%3E%3Ccircle cx=%2740%27 cy=%2735%27 r=%274%27/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 50 50%27%3E%3Crect width=%2750%27 height=%2750%27 rx=%2710%27 fill=%27%23000000%27/%3E%3Cg stroke=%27%23EDEDED%27 stroke-width=%272%27%3E%3Cline x1=%2715%27 y1=%2710%27 x2=%2730%27 y2=%2720%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2742%27 y2=%2712%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2722%27 y2=%2738%27/%3E%3Cline x1=%2730%27 y1=%2720%27 x2=%2740%27 y2=%2735%27/%3E%3Cline x1=%2722%27 y1=%2738%27 x2=%2740%27 y2=%2735%27/%3E%3C/g%3E%3Cg fill=%27%23EDEDED%27%3E%3Ccircle cx=%2715%27 cy=%2710%27 r=%274.5%27/%3E%3Ccircle cx=%2730%27 cy=%2720%27 r=%276%27/%3E%3Ccircle cx=%2742%27 cy=%2712%27 r=%273.5%27/%3E%3Ccircle cx=%2722%27 cy=%2738%27 r=%274.5%27/%3E%3Ccircle cx=%2740%27 cy=%2735%27 r=%274%27/%3E%3C/g%3E%3C/svg%3E">
   <meta property="og:title" content="Seny Labs">
   <meta property="og:description" content="An independent lab building apps around the things people do together.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.senylabs.io/">
-  <meta name="theme-color" content="#0A0A0A">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0A0A0A;
-      --bg-2: #111111;
+      --bg: #000000;
+      --bg-2: #0A0A0A;
       --line: #1F1F1F;
-      --line-2: #2A2A2A;
-      --ink: #F7F3EE;
-      --ink-2: #A8A39B;
-      --ink-3: #6B6760;
-      --accent: #A3E635;
+      --line-2: #333333;
+      --ink: #EDEDED;
+      --ink-2: #A1A1A1;
+      --ink-3: #666666;
+      --ok: #3FA66B;
+      --err: #FF6166;
       --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
@@ -42,24 +43,25 @@
       flex-direction: column;
     }
 
-    ::selection { background: var(--accent); color: #0A0A0A; }
+    ::selection { background: var(--ink); color: var(--bg); }
 
     a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-    .mono {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.02em;
-      color: var(--ink-3);
-    }
+    /* Layout rails: one container, two vertical hairlines that run the full page */
 
     .wrap {
       width: 100%;
-      max-width: 1180px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 32px;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
     }
+
+    .wrap.flush { padding: 0; }
+
+    section { border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
 
     /* Header */
 
@@ -67,14 +69,14 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(10, 10, 10, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
 
     header .wrap {
-      height: 60px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -84,869 +86,372 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 15px;
       letter-spacing: -0.01em;
     }
 
-    .wordmark svg { width: 24px; height: 24px; }
-    .wordmark .node { animation: node-glow 2.5s ease-in-out infinite; }
-    .wordmark .nd1 { animation-delay: 0s; }
-    .wordmark .nd2 { animation-delay: 0.3s; }
-    .wordmark .nd3 { animation-delay: 0.6s; }
-    .wordmark .nd4 { animation-delay: 0.9s; }
-    .wordmark .nd5 { animation-delay: 1.2s; }
-    @keyframes node-glow { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+    .wordmark svg { width: 22px; height: 22px; }
 
-    .header-right {
+    nav {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
+      font-size: 14px;
     }
 
-    .header-right a { color: var(--ink-2); transition: color 0.15s ease; }
-    .header-right a:hover { color: var(--ink); }
+    nav a { color: var(--ink-2); transition: color 0.15s ease; }
+    nav a:hover { color: var(--ink); }
 
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.5);
-      animation: pulse 2.4s ease-out infinite;
+    /* Buttons */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 40px;
+      padding: 0 18px;
+      border-radius: 9999px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.45); }
-      70% { box-shadow: 0 0 0 8px rgba(163, 230, 53, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0); }
-    }
+    .btn.primary { background: var(--ink); color: #000; border-color: var(--ink); }
+    .btn.primary:hover { background: #CCCCCC; border-color: #CCCCCC; }
+    nav a.btn.primary { color: #000; }
+    nav a.btn.primary:hover { color: #000; }
+
+    .btn.secondary { background: transparent; color: var(--ink); border-color: var(--line-2); }
+    .btn.secondary:hover { background: var(--bg-2); border-color: #555555; }
+
+    .btn.sm { height: 32px; padding: 0 14px; font-size: 13px; }
 
     /* Hero */
 
-    .hero {
+    .hero .wrap {
       position: relative;
-      padding: 140px 0 120px;
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(247, 243, 238, 0.09) 1px, transparent 1px);
-      background-size: 28px 28px;
-      mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 20%, transparent 75%);
-      pointer-events: none;
-    }
-
-    .hero .wrap { position: relative; }
-
-    .hero .kicker {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 36px;
+      padding: 128px 32px 104px;
+      text-align: center;
     }
 
     .hero h1 {
-      font-weight: 500;
-      font-size: clamp(2.2rem, 5.2vw, 4.4rem);
-      line-height: 1.04;
-      letter-spacing: -0.035em;
-      max-width: 15ch;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      max-width: 16ch;
+      margin: 0 auto;
       text-wrap: balance;
     }
 
-    .hero h1 em {
-      font-style: normal;
+    .hero .lede {
+      margin: 24px auto 0;
+      max-width: 46ch;
+      font-size: 18px;
+      line-height: 1.55;
       color: var(--ink-2);
+      text-wrap: balance;
     }
 
-    .hero .sub {
-      margin-top: 40px;
+    .hero .actions {
+      margin-top: 36px;
       display: flex;
-      align-items: center;
-      min-height: 22px;
-      font-family: var(--mono);
-      font-size: 14px;
-      color: var(--ink-2);
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .hero .sub .sep { color: var(--ink-3); margin: 0 14px; }
-    .hero .sub .caret { margin-left: 8px; }
-    .hero .sub.is-typing .caret { animation: none; opacity: 1; }
+    .cross { position: absolute; width: 13px; height: 13px; pointer-events: none; }
+    .cross::before, .cross::after { content: ''; position: absolute; background: var(--line-2); }
+    .cross::before { left: 6px; top: 0; width: 1px; height: 13px; }
+    .cross::after { top: 6px; left: 0; width: 13px; height: 1px; }
+    .cross.bl { left: -7px; bottom: -7px; }
+    .cross.br { right: -7px; bottom: -7px; }
 
-    .caret {
-      display: inline-block;
-      width: 8px;
-      height: 15px;
-      background: var(--accent);
-      animation: caret 1s steps(1) infinite;
-      vertical-align: -2px;
-    }
+    /* Section heads */
 
-    @keyframes caret { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-
-    /* Sections */
-
-    section { border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
-
-    .section-head {
-      padding: 28px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--line);
-    }
+    .section-head { padding: 64px 32px 40px; }
 
     .section-head h2 {
-      font-family: var(--mono);
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-    }
-
-    /* Index */
-
-    .row {
-      --p: var(--ink);
-      display: grid;
-      grid-template-columns: 48px 1.1fr 2fr 1fr 148px;
-      gap: 32px;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      transition: background 0.2s ease;
-    }
-
-    .row::before {
-      content: '';
-      position: absolute;
-      left: -40px;
-      right: -40px;
-      top: -1px;
-      bottom: -1px;
-      background: linear-gradient(90deg, color-mix(in srgb, var(--p) 10%, transparent), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none;
-    }
-
-    .row:hover::before { opacity: 1; }
-
-    .row .n {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--ink-3);
-      position: relative;
-    }
-
-    .row .name {
-      font-weight: 500;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      position: relative;
-      transition: color 0.2s ease;
-    }
-
-    .row:hover .name { color: var(--p); }
-
-    .row .name small {
-      display: block;
-      font-family: var(--mono);
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-top: 6px;
-    }
-
-    .row .desc {
-      font-size: 15px;
-      color: var(--ink-2);
-      line-height: 1.55;
-      max-width: 44ch;
-      position: relative;
-    }
-
-    .row .status {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--ink-2);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      position: relative;
-    }
-
-    .status .sd {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .status.live .sd { background: var(--accent); box-shadow: 0 0 10px rgba(163, 230, 53, 0.6); }
-    .status.soon .sd { border: 1.5px solid var(--ink-2); }
-    .status.lab .sd  { border: 1.5px dashed var(--ink-3); }
-
-    .row .thumb {
-      position: relative;
-      width: 148px;
-      height: 92px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--line-2);
-      filter: saturate(0.5) brightness(0.8);
-      transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .row:hover .thumb {
-      filter: none;
-      transform: translateY(-2px);
-      border-color: color-mix(in srgb, var(--p) 50%, var(--line-2));
-    }
-
-    .row .thumb a.out {
-      position: absolute;
-      inset: 0;
-    }
-
-    .thumb .tag {
-      position: absolute;
-      left: 10px;
-      bottom: 8px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.04em;
-      padding: 3px 6px;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-    }
-
-    .thumb .mock-phone {
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      width: 46px;
-      height: 92px;
-      border-radius: 9px;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .thumb .mock-phone::after {
-      content: '';
-      position: absolute;
-      left: 7px;
-      right: 7px;
-      top: 12px;
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.45);
-      box-shadow: 0 12px 0 rgba(255,255,255,0.35), 0 24px 0 rgba(255,255,255,0.25);
-    }
-
-    /* Product placeholder art */
-    .thumb.bench { background: radial-gradient(120% 120% at 20% 10%, #2E7D4F, #0F3B26 60%, #0A2418); }
-    .thumb.bench::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: -30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.35);
-      transform: translateX(-50%);
-    }
-    .thumb.ezzy { background: linear-gradient(135deg, #FFD23F 0%, #FF8A3D 55%, #6C5CE7 100%); }
-    .thumb.ezzy::before {
-      content: '';
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: inset -6px -6px 0 #FFB347;
-    }
-    .thumb.lab {
-      background: repeating-linear-gradient(45deg, #121212 0 8px, #0D0D0D 8px 16px);
-      border-style: dashed;
-    }
-    .thumb.lab .tag { background: transparent; color: var(--ink-3); border: 1px dashed var(--line-2); }
-
-    .row-link {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-    }
-
-    /* How we build */
-
-    .how {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .how > div {
-      padding: 36px 32px 40px 0;
-      border-right: 1px solid var(--line);
-    }
-
-    .how > div:not(:first-child) { padding-left: 32px; }
-    .how > div:last-child { border-right: 0; }
-
-    .how .k {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink-3);
-      margin-bottom: 18px;
-    }
-
-    .how h3 {
-      font-weight: 500;
-      font-size: 17px;
-      letter-spacing: -0.015em;
-      margin-bottom: 10px;
-    }
-
-    .how p {
-      font-size: 14px;
-      color: var(--ink-2);
-      line-height: 1.6;
-    }
-
-    /* Contact band */
-
-    .contact {
-      padding: 72px 0;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .contact h2 {
-      font-weight: 500;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      letter-spacing: -0.03em;
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      letter-spacing: -0.035em;
       line-height: 1.1;
     }
 
-    .contact .lede {
-      margin-top: 14px;
-      font-size: 15px;
+    .section-head p {
+      margin-top: 10px;
+      font-size: 16px;
       color: var(--ink-2);
-      max-width: 40ch;
+      max-width: 52ch;
     }
 
-    .contact-actions {
-      margin-top: 28px;
+    /* Cell grids. The gap shows the grid background, so every cell edge is one hairline. */
+
+    .cells {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .cells.four { grid-template-columns: repeat(4, 1fr); }
+
+    .cell {
+      background: var(--bg);
+      padding: 32px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 12px;
+      transition: background 0.15s ease;
     }
 
-    .contact a.mail,
-    .contact a.ghost {
-      font-family: var(--mono);
-      font-size: 14px;
-      padding: 13px 18px;
-      display: inline-flex;
+    a.cell:hover { background: var(--bg-2); }
+
+    .cell .name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .cell .name .arrow {
+      color: var(--ink-3);
+      font-size: 18px;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    a.cell:hover .arrow { color: var(--ink); transform: translate(2px, -2px); }
+
+    .cell .cat { font-size: 13px; color: var(--ink-3); margin-top: -8px; }
+
+    .cell p { font-size: 15px; color: var(--ink-2); line-height: 1.55; flex: 1; }
+
+    .cell .meta {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 12px;
-      white-space: nowrap;
-      color: var(--ink);
-      background: linear-gradient(180deg, rgba(247, 243, 238, 0.10), rgba(247, 243, 238, 0.035));
-      border: 1px solid rgba(247, 243, 238, 0.16);
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.14), 0 1px 2px rgba(0, 0, 0, 0.5);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    .contact a.mail:hover,
-    .contact a.ghost:hover {
-      border-color: rgba(163, 230, 53, 0.55);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.18), 0 0 0 1px rgba(163, 230, 53, 0.15), 0 10px 30px rgba(163, 230, 53, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .contact a.mail::after, .contact a.ghost::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: -60%;
-      width: 40%;
-      background: linear-gradient(100deg, transparent, rgba(247, 243, 238, 0.18), transparent);
-      transform: skewX(-18deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-    .contact a.mail:hover::after, .contact a.ghost:hover::after { left: 120%; }
-
-    .contact a.mail .dot { animation: none; box-shadow: none; }
-
-    .contact .k {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      margin-bottom: 16px;
-    }
-
-    .notify {
-      display: flex;
-      gap: 8px;
-    }
-
-    .notify input {
-      flex: 1;
-      min-width: 0;
-      font-family: var(--mono);
-      font-size: 14px;
-      color: var(--ink);
-      background: rgba(247, 243, 238, 0.035);
-      border: 1px solid rgba(247, 243, 238, 0.12);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.04);
-      border-radius: 8px;
-      padding: 13px 14px;
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-
-    .notify input::placeholder { color: var(--ink-3); }
-    .notify input:focus { border-color: rgba(163, 230, 53, 0.6); }
-
-    .notify button {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 13px 18px;
-      white-space: nowrap;
-      color: var(--ink);
-      background: linear-gradient(180deg, rgba(247, 243, 238, 0.10), rgba(247, 243, 238, 0.035));
-      border: 1px solid rgba(247, 243, 238, 0.16);
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.14), 0 1px 2px rgba(0, 0, 0, 0.5);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    .notify button:hover {
-      border-color: rgba(163, 230, 53, 0.55);
-      box-shadow: inset 0 1px 0 rgba(247, 243, 238, 0.18), 0 0 0 1px rgba(163, 230, 53, 0.15), 0 10px 30px rgba(163, 230, 53, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .notify button::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: -60%;
-      width: 40%;
-      background: linear-gradient(100deg, transparent, rgba(247, 243, 238, 0.18), transparent);
-      transform: skewX(-18deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-    .notify button:hover::after { left: 120%; }
-
-    .notify button:disabled { opacity: 0.5; cursor: default; }
-
-    .notify-note {
       margin-top: 12px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--ink-3);
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--ink-2);
     }
 
-    .notify-note.ok { color: var(--accent); }
-    .notify-note.err { color: var(--ink-2); }
+    .cell .domain { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+
+    .status { display: inline-flex; align-items: center; gap: 8px; }
+    .status .sd { width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); flex-shrink: 0; }
+    .status.live .sd { background: var(--ok); }
+    .status.soon .sd { background: transparent; border: 1px solid var(--ink-2); }
+    .status.lab .sd { background: transparent; border: 1px dashed var(--ink-3); }
+
+    .cells.four .cell { gap: 10px; }
+    .cells.four h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; }
+    .cells.four p { font-size: 14px; flex: 0; }
+
+    /* Contact */
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .contact > div { background: var(--bg); padding: 64px 32px; }
+
+    .contact h2 {
+      font-weight: 600;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+    }
+
+    .contact .lede { margin-top: 12px; font-size: 16px; color: var(--ink-2); max-width: 40ch; }
+
+    .contact .actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .notify-label { font-size: 14px; font-weight: 500; }
+    .notify-help { margin-top: 4px; margin-bottom: 16px; font-size: 14px; color: var(--ink-2); }
+
+    .notify { display: flex; gap: 8px; }
+
+    .input {
+      height: 40px;
+      width: 100%;
+      min-width: 0;
+      padding: 0 12px;
+      background: var(--bg);
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input::placeholder { color: var(--ink-3); }
+    .input:focus { outline: none; border-color: #888888; box-shadow: 0 0 0 1px #888888; }
+
+    .notify .btn { border-radius: 6px; }
+    .notify .btn:disabled { opacity: 0.5; cursor: default; }
+
+    .notify-note { margin-top: 10px; font-size: 13px; color: var(--ink-3); }
+    .notify-note.ok { color: var(--ink); }
+    .notify-note.err { color: var(--err); }
 
     /* Footer */
 
-    footer {
-      margin-top: auto;
-      padding: 24px 0 32px;
-    }
+    footer { margin-top: auto; }
 
     footer .wrap {
+      padding: 24px 32px 32px;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px 32px;
+      gap: 8px 24px;
+      font-size: 13px;
+      color: var(--ink-3);
     }
 
-    footer a { color: var(--ink-3); transition: color 0.15s ease; }
     footer a:hover { color: var(--ink); }
 
     /* Responsive */
 
     @media (max-width: 900px) {
-      .row { grid-template-columns: 36px 1fr 120px; gap: 20px; row-gap: 14px; }
-      .row .desc { grid-column: 2 / 3; }
-      .row .status { grid-column: 2 / 3; }
-      .row .thumb { grid-row: 1 / 4; grid-column: 3; width: 120px; height: 150px; }
-      .thumb .mock-phone { right: 12px; top: 20px; width: 52px; height: 110px; }
-      .how { grid-template-columns: 1fr 1fr; }
-      .contact { grid-template-columns: 1fr; gap: 44px; }
-      .how > div { padding: 28px 24px 32px 0; border-bottom: 1px solid var(--line); }
-      .how > div:nth-child(2n) { border-right: 0; }
-      .how > div:nth-child(n+3) { border-bottom: 0; }
-      .how > div:nth-child(3) { padding-left: 0; }
+      .cells, .cells.four { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .contact > div { padding: 48px 32px; }
     }
 
     @media (max-width: 640px) {
-      .wrap { padding: 0 16px; }
-      .header-right a:not(:last-child) { display: none; }
-      .hero { padding: 88px 0 72px; }
-      .hero .kicker { flex-direction: column; gap: 6px; }
-      .row { grid-template-columns: 1fr 96px; }
-      .row .n { display: none; }
-      .row .name, .row .desc, .row .status { grid-column: 1; }
-      .row .thumb { grid-column: 2; grid-row: 1 / 4; width: 96px; height: 140px; }
-      .thumb .mock-phone { display: none; }
-      .thumb.bench .tag, .thumb.ezzy .tag { display: none; }
-      .thumb.bench::before { width: 44px; height: 44px; top: -22px; }
-      .row::before { left: -16px; right: -16px; }
-      .how { grid-template-columns: 1fr; }
-      .how > div, .how > div:not(:first-child) { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .how > div:last-child { border-bottom: 0; }
-      .contact { grid-template-columns: 1fr; gap: 44px; padding: 56px 0; }
+      .wrap { padding: 0 16px; border-left: 0; border-right: 0; }
+      .wrap.flush { padding: 0; }
+      .cross { display: none; }
+      nav a:not(.btn) { display: none; }
+      .hero .wrap { padding: 80px 16px 64px; }
+      .hero .lede { font-size: 16px; }
+      .section-head { padding: 48px 16px 28px; }
+      .cells, .cells.four { grid-template-columns: 1fr; }
+      .cell { padding: 24px 16px; }
+      .contact > div { padding: 40px 16px; }
+      footer .wrap { padding: 20px 16px 28px; }
       .notify { flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
-    @keyframes conn-trace { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
-
-    /* Intro */
-
-    #intro {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      cursor: none;
-      overflow: hidden;
-    }
-
-    #intro .intro-panel {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: #000;
-      transition: transform 0.85s cubic-bezier(0.7, 0, 0.2, 1);
-      will-change: transform;
-      z-index: 0;
-    }
-    #intro .intro-panel.top { top: 0; border-bottom: 1px solid rgba(247, 243, 238, 0); transition: transform 0.85s cubic-bezier(0.7, 0, 0.2, 1), border-color 0.2s ease; }
-    #intro .intro-panel.bottom { bottom: 0; border-top: 1px solid rgba(247, 243, 238, 0); transition: transform 0.85s cubic-bezier(0.7, 0, 0.2, 1), border-color 0.2s ease; }
-    #intro.is-clicking .intro-panel.top, #intro.is-open .intro-panel.top { border-bottom-color: rgba(247, 243, 238, 0.35); }
-    #intro.is-clicking .intro-panel.bottom, #intro.is-open .intro-panel.bottom { border-top-color: rgba(247, 243, 238, 0.35); }
-    #intro.is-open .intro-panel.top { transform: translateY(-100%); }
-    #intro.is-open .intro-panel.bottom { transform: translateY(100%); }
-
-    #intro .intro-orb,
-    #intro .intro-word,
-    #intro .intro-cursor,
-    #intro .intro-ripple {
-      z-index: 2;
-    }
-    #intro.is-open .intro-orb,
-    #intro.is-open .intro-word,
-    #intro.is-open .intro-cursor,
-    #intro.is-open .intro-ripple {
-      opacity: 0 !important;
-      transition: opacity 0.25s ease !important;
-    }
-
-    #intro .intro-orb {
-      position: relative;
-      width: 260px;
-      height: 260px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      opacity: 0;
-      transform: scale(0.92);
-      transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-    }
-
-    #intro .intro-orb::before {
-      content: '';
-      position: absolute;
-      inset: -70px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(247, 243, 238, 0.14) 0%, rgba(247, 243, 238, 0.05) 40%, transparent 70%);
-      opacity: 0;
-      transition: opacity 1.2s ease;
-    }
-
-    #intro.is-lit .intro-orb { opacity: 1; transform: scale(1); }
-    #intro.is-lit .intro-orb::before { opacity: 1; }
-
-    #intro .intro-mark {
-      width: 260px;
-      height: 260px;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 0 14px rgba(247, 243, 238, 0.45));
-    }
-
-    #intro .intro-mark .conn {
-      fill: none;
-      stroke-dasharray: 60;
-      stroke-dashoffset: 60;
-    }
-    #intro .intro-mark .node { opacity: 0; }
-
-    #intro.is-lit .intro-mark .conn { animation: conn-trace 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-    #intro.is-lit .intro-mark .node { animation: intro-node-in 0.6s ease forwards, node-glow 2.5s ease-in-out 1.6s infinite; }
-    #intro.is-lit .intro-mark .nd1 { animation-delay: 0.15s, 1.6s; }
-    #intro.is-lit .intro-mark .nd2 { animation-delay: 0.45s, 1.9s; }
-    #intro.is-lit .intro-mark .nd3 { animation-delay: 0.75s, 2.2s; }
-    #intro.is-lit .intro-mark .nd4 { animation-delay: 1.05s, 2.5s; }
-    #intro.is-lit .intro-mark .nd5 { animation-delay: 1.35s, 2.8s; }
-    #intro.is-lit .intro-mark .cd1 { animation-delay: 0.05s; }
-    #intro.is-lit .intro-mark .cd2 { animation-delay: 0.35s; }
-    #intro.is-lit .intro-mark .cd3 { animation-delay: 0.65s; }
-    #intro.is-lit .intro-mark .cd4 { animation-delay: 0.95s; }
-    #intro.is-lit .intro-mark .cd5 { animation-delay: 1.25s; }
-
-    @keyframes intro-node-in { from { opacity: 0; } to { opacity: 0.85; } }
-
-    #intro .intro-word {
-      font-weight: 600;
-      font-size: 52px;
-      letter-spacing: -0.02em;
-      color: #F7F3EE;
-      display: flex;
-      align-items: center;
-      min-height: 1.3em;
-      line-height: 1.3;
-    }
-
-    #intro .intro-caret {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      margin-left: 3px;
-      background: #F7F3EE;
-      opacity: 0;
-    }
-
-    #intro.is-typing .intro-caret { opacity: 1; animation: intro-caret 0.9s steps(1) infinite; }
-    #intro.is-typed .intro-caret { animation: intro-caret 0.9s steps(1) infinite; }
-
-    @keyframes intro-caret { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
-
-    #intro .intro-cursor {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 26px;
-      height: 35px;
-      opacity: 0;
-      transform: translate(42vw, 34vh);
-      transition: transform 1.5s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.5s ease;
-      will-change: transform;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    #intro.is-pointing .intro-cursor { opacity: 1; transform: translate(8px, -77px); }
-    #intro.is-clicking .intro-cursor { transform: translate(8px, -77px) scale(0.86); transition-duration: 0.09s; }
-
-    #intro .intro-ripple {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 14px;
-      height: 14px;
-      margin: -7px 0 0 -7px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(247, 243, 238, 0.7);
-      opacity: 0;
-      transform: translate(10px, -75px) scale(0.4);
-      pointer-events: none;
-    }
-
-    #intro.is-clicking .intro-ripple { animation: intro-ripple 0.55s ease-out forwards; }
-
-    @keyframes intro-ripple {
-      from { opacity: 0.8; transform: translate(10px, -75px) scale(0.4); }
-      to   { opacity: 0;   transform: translate(10px, -75px) scale(5); }
-    }
-
-    body.intro-locked { overflow: hidden; }
-
-    @media (max-width: 640px) {
-      #intro .intro-orb, #intro .intro-mark { width: 150px; height: 150px; }
-      #intro .intro-orb::before { inset: -40px; }
-      #intro .intro-word { font-size: 30px; }
-      #intro .intro-cursor { transform: translate(34vw, 28vh); }
-      #intro.is-pointing .intro-cursor { transform: translate(4px, -52px); }
-      #intro.is-clicking .intro-cursor { transform: translate(4px, -52px) scale(0.86); }
-      #intro .intro-ripple { transform: translate(6px, -50px) scale(0.4); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #intro { display: none; }
-    }
   </style>
 </head>
 <body>
-
-  <div id="intro" aria-hidden="true">
-    <div class="intro-panel top"></div>
-    <div class="intro-panel bottom"></div>
-    <div class="intro-orb">
-      <svg class="intro-mark" viewBox="3 -1 50 50" aria-hidden="true">
-        <line class="conn cd1" x1="15" y1="10" x2="30" y2="20" stroke="#F7F3EE" stroke-width="1.2"/>
-        <line class="conn cd2" x1="30" y1="20" x2="42" y2="12" stroke="#F7F3EE" stroke-width="1.2"/>
-        <line class="conn cd3" x1="30" y1="20" x2="22" y2="38" stroke="#F7F3EE" stroke-width="1.2"/>
-        <line class="conn cd4" x1="30" y1="20" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.2"/>
-        <line class="conn cd5" x1="22" y1="38" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.2"/>
-        <circle class="node nd1" cx="15" cy="10" r="4" fill="#F7F3EE"/>
-        <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#F7F3EE"/>
-        <circle class="node nd3" cx="42" cy="12" r="3" fill="#F7F3EE"/>
-        <circle class="node nd4" cx="22" cy="38" r="4" fill="#F7F3EE"/>
-        <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#F7F3EE"/>
-      </svg>
-    </div>
-    <div class="intro-word"><span class="intro-type"></span><span class="intro-caret"></span></div>
-    <div class="intro-ripple"></div>
-    <svg class="intro-cursor" viewBox="0 0 22 30" aria-hidden="true">
-      <path d="M2 2 L2 24 L8 18.5 L12.5 28 L16.5 26.2 L12 17 L20 17 Z" fill="#F7F3EE" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
-    </svg>
-  </div>
 
   <header>
     <div class="wrap">
       <a href="#" class="wordmark">
         <svg viewBox="0 0 50 50" aria-hidden="true">
-          <line x1="15" y1="10" x2="30" y2="20" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="42" y2="12" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="22" y2="38" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="30" y1="20" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
-          <line x1="22" y1="38" x2="40" y2="35" stroke="#F7F3EE" stroke-width="1.4"/>
-          <circle class="node nd1" cx="15" cy="10" r="4" fill="#F7F3EE"/>
-          <circle class="node nd2" cx="30" cy="20" r="5.5" fill="#F7F3EE"/>
-          <circle class="node nd3" cx="42" cy="12" r="3" fill="#F7F3EE"/>
-          <circle class="node nd4" cx="22" cy="38" r="4" fill="#F7F3EE"/>
-          <circle class="node nd5" cx="40" cy="35" r="3.5" fill="#F7F3EE"/>
+          <line x1="15" y1="10" x2="30" y2="20" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="42" y2="12" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="22" y2="38" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="30" y1="20" x2="40" y2="35" stroke="#EDEDED" stroke-width="1.4"/>
+          <line x1="22" y1="38" x2="40" y2="35" stroke="#EDEDED" stroke-width="1.4"/>
+          <circle cx="15" cy="10" r="4" fill="#EDEDED"/>
+          <circle cx="30" cy="20" r="5.5" fill="#EDEDED"/>
+          <circle cx="42" cy="12" r="3" fill="#EDEDED"/>
+          <circle cx="22" cy="38" r="4" fill="#EDEDED"/>
+          <circle cx="40" cy="35" r="3.5" fill="#EDEDED"/>
         </svg>
         Seny Labs
       </a>
-      <nav class="header-right mono">
-        <a href="#index">Index</a>
+      <nav>
+        <a href="#apps">Apps</a>
         <a href="#how">How we build</a>
-        <a href="work.html">Work with us</a>
+        <a href="work.html" class="btn primary sm">Work with us</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="wrap">
-      <div class="kicker mono">
-        <span>Independent lab</span>
-        <span>New York &middot; Barcelona</span>
+      <h1>We build apps around the things people do together.</h1>
+      <p class="lede">Seny Labs is an independent lab in New York and Barcelona. The current work is in entertainment, careers, and community.</p>
+      <div class="actions">
+        <a href="#apps" class="btn primary">See the apps</a>
+        <a href="work.html" class="btn secondary">Work with us</a>
       </div>
-      <h1>We build apps around the things <em>people do together.</em></h1>
-      <div class="sub" data-type="entertainment, careers, community">
-        <span class="typed"><span>entertainment</span><span class="sep">/</span><span>careers</span><span class="sep">/</span><span>community</span></span><span class="caret" aria-hidden="true"></span>
-      </div>
+      <span class="cross bl" aria-hidden="true"></span>
+      <span class="cross br" aria-hidden="true"></span>
     </div>
   </section>
 
-  <section id="index">
-    <div class="wrap">
+  <section id="apps">
+    <div class="wrap flush">
       <div class="section-head">
-        <h2>01 &nbsp;/&nbsp; Index</h2>
-        <span class="mono">3 entries</span>
+        <h2>Apps</h2>
+        <p>Each one does a single job for one part of your week.</p>
       </div>
-
-      <div class="row" style="--p: #FF8A3D">
-        <a class="row-link" href="https://thebenchfc.com" target="_blank" rel="noopener" aria-label="The Bench FC"></a>
-        <span class="n">001</span>
-        <div class="name">The Bench FC<small>Football</small></div>
-        <p class="desc">Predict every match, pick the players who'll decide it, and argue it out in live chat with fans of your club.</p>
-        <div class="status live"><span class="sd"></span>In testing &middot; iOS</div>
-        <div class="thumb bench"><span class="mock-phone"></span><span class="tag">thebenchfc.com &rarr;</span></div>
-      </div>
-
-      <div class="row" style="--p: #FFD23F">
-        <a class="row-link" href="https://meetezzy.com" target="_blank" rel="noopener" aria-label="Ezzy"></a>
-        <span class="n">002</span>
-        <div class="name">Ezzy<small>Careers</small></div>
-        <p class="desc">A career OS. Resume, company research, practice questions, and full mock interviews in one place, with memory across sessions.</p>
-        <div class="status soon"><span class="sd"></span>Launching Dec 2026</div>
-        <div class="thumb ezzy"><span class="mock-phone"></span><span class="tag">meetezzy.com &rarr;</span></div>
-      </div>
-
-      <div class="row" style="--p: #A3E635">
-        <span class="n">003</span>
-        <div class="name">Untitled<small>Community</small></div>
-        <p class="desc">A community app. Details when there is something to show.</p>
-        <div class="status lab"><span class="sd"></span>In the lab</div>
-        <div class="thumb lab"><span class="tag">003</span></div>
+      <div class="cells">
+        <a class="cell" href="https://thebenchfc.com" target="_blank" rel="noopener">
+          <div class="name">The Bench FC <span class="arrow" aria-hidden="true">&#8599;</span></div>
+          <div class="cat">Football</div>
+          <p>Predict every match, pick the players who'll decide it, and argue it out in live chat with fans of your club.</p>
+          <div class="meta">
+            <span class="status live"><span class="sd"></span>In testing on iOS</span>
+            <span class="domain">thebenchfc.com</span>
+          </div>
+        </a>
+        <a class="cell" href="https://meetezzy.com" target="_blank" rel="noopener">
+          <div class="name">Ezzy <span class="arrow" aria-hidden="true">&#8599;</span></div>
+          <div class="cat">Careers</div>
+          <p>A career OS. Resume, company research, practice questions, and full mock interviews in one place, with memory across sessions.</p>
+          <div class="meta">
+            <span class="status soon"><span class="sd"></span>Launching December 2026</span>
+            <span class="domain">meetezzy.com</span>
+          </div>
+        </a>
+        <div class="cell">
+          <div class="name">Untitled</div>
+          <div class="cat">Community</div>
+          <p>A community app. Details when there is something to show.</p>
+          <div class="meta">
+            <span class="status lab"><span class="sd"></span>In the lab</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="how">
-    <div class="wrap">
+    <div class="wrap flush">
       <div class="section-head">
-        <h2>02 &nbsp;/&nbsp; How we build</h2>
-        <span class="mono">4 rules</span>
+        <h2>How we build</h2>
       </div>
-      <div class="how">
-        <div>
-          <div class="k">01</div>
+      <div class="cells four">
+        <div class="cell">
           <h3>Small team, long leash.</h3>
           <p>Whoever builds a product owns it, from the first commit to launch.</p>
         </div>
-        <div>
-          <div class="k">02</div>
+        <div class="cell">
           <h3>AI inside the product.</h3>
           <p>Each app remembers you and adapts to how you use it, so there are fewer repeated decisions every time you open it.</p>
         </div>
-        <div>
-          <div class="k">03</div>
+        <div class="cell">
           <h3>One job per app.</h3>
           <p>Each app does one thing for one part of your week. We ship, watch how people use it, and remove what they don't.</p>
         </div>
-        <div>
-          <div class="k">04</div>
+        <div class="cell">
           <h3>Designed for the moment of use.</h3>
           <p>A match kicking off. An interview in ten minutes. Whatever we build has to work right then, with no setup and nothing to learn.</p>
         </div>
@@ -955,165 +460,35 @@
   </section>
 
   <section id="contact">
-    <div class="wrap">
+    <div class="wrap flush">
       <div class="contact">
         <div>
           <h2>Get in touch.</h2>
           <p class="lede">Questions, press, or a project you need built.</p>
-          <div class="contact-actions">
-            <a class="mail" href="mailto:info@senylabs.io"><span class="dot"></span>info@senylabs.io</a>
-            <a class="ghost" href="work.html">Work with us &rarr;</a>
+          <div class="actions">
+            <a class="btn primary" href="mailto:info@senylabs.io">info@senylabs.io</a>
+            <a class="btn secondary" href="work.html">Work with us</a>
           </div>
         </div>
         <div>
-          <div class="k">Launch notes</div>
+          <div class="notify-label">Launch notes</div>
+          <p class="notify-help">One email per launch. Nothing else.</p>
           <form class="notify" action="#" method="POST" novalidate>
-            <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
-            <button type="submit">Notify me</button>
+            <input class="input" type="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
+            <button class="btn primary" type="submit">Notify me</button>
           </form>
-          <p class="notify-note">One email per launch.</p>
+          <p class="notify-note"></p>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap mono">
+    <div class="wrap">
       <span>&copy; 2026 Seny Labs LLC &middot; New York, NY</span>
       <a href="privacy.html">Privacy</a>
     </div>
   </footer>
-
-
-  <script>
-    (function () {
-      var intro = document.getElementById('intro');
-      if (!intro) return;
-
-      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var internal = false;
-      try { internal = document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
-
-      if (reduced || internal) { intro.remove(); return; }
-
-      window.__introActive = true;
-
-      document.body.classList.add('intro-locked');
-
-      var typeEl = intro.querySelector('.intro-type');
-      var word = 'Seny Labs';
-      var timers = [];
-      var done = false;
-
-      function wait(ms, fn) { timers.push(setTimeout(fn, ms)); }
-
-      function finish() {
-        if (done) return;
-        done = true;
-        timers.forEach(clearTimeout);
-        document.body.classList.remove('intro-locked');
-        intro.remove();
-        document.dispatchEvent(new CustomEvent('intro:done'));
-      }
-
-      function open() {
-        if (done) return;
-        intro.classList.add('is-open');
-        wait(900, finish);
-      }
-
-      /* Timeline: each beat waits for the previous one to finish */
-      var T = {
-        lit: 400,        /* orb begins to form */
-        type: 3400,      /* orb fully formed and settled; typing begins */
-        afterType: 1000, /* hold on the finished word */
-        slide: 1500,     /* cursor travel time (matches CSS transition) */
-        hover: 600,      /* cursor rests on the orb before clicking */
-        afterClick: 500  /* beat after the click, then the screen splits */
-      };
-
-      wait(T.lit, function () { intro.classList.add('is-lit'); });
-
-      wait(T.type, function () {
-        intro.classList.add('is-typing');
-        var i = 0;
-        function tick() {
-          if (done) return;
-          typeEl.textContent = word.slice(0, ++i);
-          if (i < word.length) {
-            wait(word[i - 1] === ' ' ? 260 : 110 + Math.random() * 90, tick);
-            return;
-          }
-          intro.classList.remove('is-typing');
-          intro.classList.add('is-typed');
-          var t = T.afterType;
-          wait(t, function () { intro.classList.add('is-pointing'); });
-          t += T.slide + T.hover;
-          wait(t, function () { intro.classList.add('is-clicking'); });
-          t += T.afterClick;
-          wait(t, open);
-        }
-        tick();
-      });
-
-      /* Skip */
-      intro.addEventListener('click', open);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') open();
-      });
-    })();
-  </script>
-
-  <script>
-    (function () {
-      var sub = document.querySelector('.hero .sub');
-      if (!sub) return;
-      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced) return;
-
-      var words = sub.getAttribute('data-type').split(',').map(function (w) { return w.trim(); });
-      var out = sub.querySelector('.typed');
-      out.innerHTML = '';
-
-      var wi = 0, ci = 0, cur = null;
-
-      function typeWord() {
-        if (ci === 0) {
-          if (wi > 0) {
-            var sep = document.createElement('span');
-            sep.className = 'sep';
-            sep.textContent = '/';
-            out.appendChild(sep);
-          }
-          cur = document.createElement('span');
-          out.appendChild(cur);
-        }
-        cur.textContent = words[wi].slice(0, ++ci);
-        if (ci < words[wi].length) {
-          setTimeout(typeWord, 70 + Math.random() * 60);
-        } else if (++wi < words.length) {
-          ci = 0;
-          setTimeout(typeWord, 650);
-        } else {
-          sub.classList.remove('is-typing');
-        }
-      }
-
-      function start() {
-        setTimeout(function () {
-          sub.classList.add('is-typing');
-          typeWord();
-        }, 500);
-      }
-
-      if (window.__introActive) {
-        document.addEventListener('intro:done', start, { once: true });
-      } else {
-        setTimeout(start, 400);
-      }
-    })();
-  </script>
-
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
